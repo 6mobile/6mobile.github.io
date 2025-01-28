@@ -4,6 +4,7 @@ table#tlayout {
     border: none;
     border-collapse: separate;
     background: white;
+	width: 100%;
 }
 
 body {

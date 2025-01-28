@@ -1,20 +1,15 @@
-  Information [index.html]
-  Calendar [calendar.html]
-  Answer Submission [answers.html]
+Information [index.html]
+Calendar [calendar.html]
+Answer Submission [answers.html]
   # Help Queue [queue.html]
 #Lectures
   #Notes [notes.html]
-Labs
-  Lab 0 [labs/lab0.html]
-  # Lab 1 [labs/lab1.html]
-  # Lab 2 [labs/lab2.html]
-  # Lab 3 [labs/lab3.html]
-  # Lab 4 [labs/lab4_new.html]
+
 # Problem Sets
-  # Gradescope Submission [https://www.gradescope.com/courses/363719]
-  # Pset 1 [materials_2022/6_808_PSet_1_2022.pdf]
-  # Pset 1 Solutions [materials_2022/6_808_PSet_1_2022_solutions.pdf]
-  # Pset 2 [materials_2022/6_808_PSet_2_2022.pdf]
+#   Gradescope Submission [https://www.gradescope.com/courses/363719]
+#   Pset 1 [materials_2022/6_808_PSet_1_2022.pdf]
+#   Pset 1 Solutions [materials_2022/6_808_PSet_1_2022_solutions.pdf]
+#   Pset 2 [materials_2022/6_808_PSet_2_2022.pdf]
 # Project
 #   Project Info [projects.html]
 # Presentation [presentation.html]
@@ -36,3 +31,10 @@ Labs
 # Midterm
 # Misc
 #   Slack Workspace [https://mit-6808-2022.slack.com]
+
+Labs
+  Lab 0 [labs/lab0.html]
+  # Lab 1 [labs/lab1.html]
+  # Lab 2 [labs/lab2.html]
+  # Lab 3 [labs/lab3.html]
+  # Lab 4 [labs/lab4_new.html]
