@@ -1,0 +1,22 @@
+# jemdoc: menu{MENU}{queue.html}
+=  Help Queue
+
+Please add yourself to the queue and join via the
+Zoom link or in the room in person (make a note of what you are wearing so we can identify you).
+
+The queue is automatically updated every 30 seconds. Refresh the page to update the
+queue manually.
+
+{{<iframe id="sheet" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQW9yYwgmstuKcTsnOcE-_Ct9IhyerDCxVvQo6dqmr7SV4mUse0SLEb2A01QAGTC7obwtEW4364nJQn/pubhtml?gid=685267172&amp;single=true&amp;widget=true&amp;headers=false" width="700" height="400"></iframe>}}
+
+{{<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfPcqzBgyNwvQL_JAi1ty-mTir1QGdCt7N9Ry7esWFbrn1QXA/viewform?embedded=true" width="640" height="1154" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>}}
+
+# Update script: https://yagisanatode.com/2018/12/20/embedding-a-live-google-sheet-graph-that-updates-every-30-seconds-into-a-wordpress-post-part-2-of-google-forms-in-wordpress-with-live-chart-project/
+{{
+<script>
+window.setInterval("reloadIFrame();", 30000);
+function reloadIFrame() {
+ document.getElementById("sheet").src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQW9yYwgmstuKcTsnOcE-_Ct9IhyerDCxVvQo6dqmr7SV4mUse0SLEb2A01QAGTC7obwtEW4364nJQn/pubhtml?gid=685267172&amp;single=true&amp;widget=true&amp;headers=false";
+}
+</script>
+}}
