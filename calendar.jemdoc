@@ -132,7 +132,7 @@ table.calendar thead tr {
   <td id="2025-2-19"></td>
 
   <td id="2025-2-20" class="lecture"><span class="date">Feb 20</span><br />
-    <b>LEC 5:</b> Network Connectivity<br />
+    <b>LEC 5:</b> Network Connectivity (BLE, low-power WAN, Wi-Fi, cellular, 5G)<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="./materials/AirtagsReading.pdf" target="_blank">gps surveillance</a></span><br />
     <span class="deadline"><b>DUE:</b> Lab 1</span>
