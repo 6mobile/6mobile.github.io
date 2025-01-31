@@ -155,7 +155,7 @@ table.calendar thead tr {
   <td id="2025-2-27" class="lecture"><span class="date">Feb 27</span><br />
     <b>LEC 7:</b> Batteryless Connectivity & Smart Cities<br />
     <span class="reading"><b>Preparation:</b> Read
-    <a href="https://cs.uwaterloo.ca/~oabari/Papers/Mobicom18a.pdf" target="_blank">Hacking RFIDs</a></span><br />
+    <a href="https://web.cs.ucla.edu/~omid/Papers/Mobicom18a.pdf" target="_blank">Hacking RFIDs</a></span><br />
     <span class="reading"><b>Assigned:</b> Lab 2</span>
   </td>
 
@@ -187,9 +187,9 @@ table.calendar thead tr {
   <td id="2025-3-10"></td>
 
   <td id="2025-3-11" class="lecture"><span class="date">Mar 11</span><br />
-    <b>LEC 10:</b> Crash Mapping<br />
+    <b>LEC 10:</b>Self-Driving Cars<br />
     <span class="reading"><b>Preparation:</b> Read
-    <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/He_Inferring_High-Resolution_Traffic_Accident_Risk_Maps_Based_on_Satellite_Imagery_ICCV_2021_paper.pdf" target="_blank">Crash Rate Maps for Roads</a></span><br />
+    <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Guan_Through_Fog_High-Resolution_Imaging_Using_Millimeter_Wave_Radar_CVPR_2020_paper.pdf" target="_blank">Hawkeye: Through Fog High Resolution Imaging Using Millimeter Wave Radar</a></span><br />
     <span class="reading"><b>Assigned:</b>Lab 3</span><br />
     <span class="deadline"><b>DUE:</b> Lab 2</span>
   </td>
@@ -197,9 +197,10 @@ table.calendar thead tr {
   <td id="2025-3-12"></td>
 
     <td id="2025-3-18" class="lecture"><span class="date">Mar 13</span><br />
-    <b>LEC 11:</b> Health & Vitals sensing<br />
+    <b>LEC 11:</b>Earables and Health<br />
     <span class="reading"><b>Preparation:</b> Read
-    <a href="http://witrack.csail.mit.edu/vitalradio/content/vitalradio-paper.pdf">Vital-Radio</a></span><br />
+    <a href="https://dl.acm.org/doi/abs/10.1145/3570361.3613281">APG: Audioplethysmography for Cardiac Monitoring in Hearables
+</a></span><br />
     <span class="deadline"><b>DUE:</b> Lab 3</span>
   </td>
   
@@ -224,7 +225,7 @@ table.calendar thead tr {
   <td id="2025-3-13" class="lecture"><span class="date">Mar 20</span><br />
     <b>LEC 13:</b> Mobile & Augmented/Mixed Reality<br />
     <span class="reading"><b>Preparation:</b> Read
-    <a href="https://dspace.mit.edu/bitstream/handle/1721.1/110758/Glimpse.pdf?sequence=1&isAllowed=y" target="_blank">Glimpse</a></span><br />
+    <a href="https://users.ece.cmu.edu/~agr/resources/publications/xair_ismar_2024.pdf" target="_blank">XaiR</a></span><br />
     <span class="reading"><b>Assigned:</b> Pset 2</span><br />
     <span class="reading"><b>Assigned:</b> Project Proposal Instructions</span>
   </td>
