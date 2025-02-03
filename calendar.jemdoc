@@ -200,9 +200,9 @@ table.calendar thead tr {
     <td id="2025-3-18" class="lecture"><span class="date">Mar 13</span><br />
     <b>LEC 11:</b>Earables and Health<br />
     <span class="reading"><b>Preparation:</b> Read
-    <a href="https://dl.acm.org/doi/abs/10.1145/3570361.3613281">APG: Audioplethysmography for Cardiac Monitoring in Hearables
-</a></span><br />
-    <span class="deadline"><b>DUE:</b> Lab 3</span>
+    <a href="https://dl.acm.org/doi/abs/10.1145/3570361.3613281">APG: Audioplethysmography for Cardiac Monitoring in Hearables</a></span><br/>
+    <span class="reading"><b>Assigned:</b> Pset 2</span><br />
+    <span class="reading"><b>Assigned:</b> Project Proposal Instructions</span>
   </td>
   
 
@@ -216,7 +216,7 @@ table.calendar thead tr {
     <b>LEC 12:</b> Attacks on Acoustic Sensing<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="https://synrg.csl.illinois.edu/papers/backdoor_mobisys17.pdf" target="_blank">BackDoor</a></span><br />
-    <span class="reading"><b>Assigned:</b>Lab 4</span>
+    <span class="deadline"><b>DUE:</b> Lab 3</span>
   </td>
 
   <td id="2025-3-19"></td>
@@ -227,8 +227,8 @@ table.calendar thead tr {
     <b>LEC 13:</b> Mobile & Augmented/Mixed Reality<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="https://users.ece.cmu.edu/~agr/resources/publications/xair_ismar_2024.pdf" target="_blank">XaiR</a></span><br />
-    <span class="reading"><b>Assigned:</b> Pset 2</span><br />
-    <span class="reading"><b>Assigned:</b> Project Proposal Instructions</span>
+    <span class="reading"><b>Assigned:</b>Lab 4</span>
+    <br />
   </td>
 
   <td id="2025-3-21"></td>
@@ -274,7 +274,9 @@ table.calendar thead tr {
   <td id="2025-4-9"></td>
 
   <td id="2025-4-10" class="special"><span class="date">Apr 10</span><br />
-    Project meetings<br />(No lecture; meet with staff during class time)
+    Project meetings<br />(No lecture; meet with staff during class time)<br/>
+    <span class="deadline"><b>DUE:</b> Pset 2</span>
+    
   </td>
 
   <td id="2025-4-11"></td>
@@ -283,14 +285,15 @@ table.calendar thead tr {
 <tr> <!-- week of Apr 14 -->
   <td id="2025-4-14"></td>
 
-  <td id="2025-4-15" class="quiz"><span class="date">Apr 15</span><br />
-    <b>Midterm during lecture time</b>
+  <td id="2025-4-15" class="lecture"><span class="date">Apr 15</span><br />
+    Quiz review session during class<br/>
+     <span class="deadline"><b>DUE:</b>Final Project Components List</span>
   </td>
 
   <td id="2025-4-16"></td>
 
-  <td id="2025-4-17" class="special"><span class="date">Apr 17</span><br />
-    Project meetings<br />(No lecture; meet with staff during class time)
+  <td id="2025-4-17" class="quiz"><span class="date">Apr 17</span><br />
+    <b>Midterm during lecture time</b>
   </td>
 
   <td id="2025-4-18"></td>
@@ -342,8 +345,7 @@ table.calendar thead tr {
   <td id="2025-5-7"></td>
 
   <td id="2025-5-8" class="special"><span class="date">May 8</span><br />
-     <b>Final Presentations</b><br />
-     <span class="deadline"><b>DUE:</b> Presentations and Demos</span>
+    Project meetings<br />(No lecture; meet with staff during class time)
   </td>
 
   <td id="2025-5-9"></td>
@@ -354,6 +356,7 @@ table.calendar thead tr {
 
   <td id="2025-5-13" class="special"><span class="date">May 13</span><br />
     <b>Final Presentations</b><br />
+    <span class="deadline"><b>DUE:</b> Presentations and Demos</span><br/>
     <i>Last Day of Classes</i><br />
   </td>
 
