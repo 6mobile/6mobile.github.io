@@ -124,6 +124,38 @@ due to deadlines in other classes, job interviews, MIT athletic events, illness,
 For extensions under extenuating circumstances (e.g., you are sick for a week), we
 require a letter from one of the student deans.
 
+== AI Policy
+
+This policy outlines the permitted and prohibited uses of AI in this course.
+
+*Permitted Uses of AI*
+- *Debugging, Refactoring, and Optimizing Code:* You may use AI to help with debugging, improving efficiency, and refactoring your code.
+- *Concept Explanation:* You may use AI to explain a concept to you, but be aware that AI-generated explanations may contain errors or biases. You’re advised to verify the provided information.
+- *Brainstorming with AI:* You may use AI to generate ideas or approaches for your projects.
+
+*Prohibited Uses of AI*
+- *Writing Reviews & Answering Questions About Papers:* AI cannot be used to answer questions for assignments or problem sets.
+
+*Disclosure Requirement*
+If you use AI /in any capacity/, you must:
+. *Disclose your AI usage* in your submission (see below for examples).
+. *Specify the AI model used* (e.g., ChatGPT-4 Free, Gemini Free, Copilot Free).
+. *Explain how AI was used* (e.g., "Used ChatGPT-4 Free to optimize a function for efficiency").
+
+*How to Disclose AI Usage:*
+
+- *Lab Submissions:* Include a comment at the top of the PDF submission regarding your use of AI in the assignment. 
+-- /Example 1:  "AI Usage Disclosure: Used ChatGPT-4 to optimize the sorting function and debug memory leak issues."/
+-- /Example 2: "AI Usage Disclosure: Initial function structure written by student, AI suggested improvements in efficiency."/
+
+- *Project Proposals & Written Reports:* Acknowledge AI usage in the beginning of the report (e.g., a short paragraph with a couple of sentences in Italic). .
+-- /Example: "During the development of this proposal, I used ChatGPT-4 Free to refiine the problem statement and improve sentence clarity. The core ideas and structure were developed independently."/
+
+- *General Disclosure Format (for all assignments):*
+-- *AI Tool Used:* (e.g., ChatGPT-4 Free, Copilot Free)
+-- *Purpose:* (e.g., debugging, code optimization, explanation assistance)
+-- *Student Contribution:* Clarify what was done by the student vs. what AI assisted with.
+
 # == Midterm
 
 # There will be one midterm, in-class on April 28.
