@@ -92,10 +92,11 @@ table.calendar thead tr {
     <b>LEC 2:</b> Fundamentals of IoT Localization<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="http://onlinelibrary.wiley.com.libproxy.mit.edu/doi/10.1002/0470092335.ch6/pdf" target="_blank">Location-based Services</a>,
-    <a href="https://en.wikipedia.org/wiki/Global_Positioning_System" target="_blank">Wikipedia: GPS</a></span>
+    <a href="https://en.wikipedia.org/wiki/Global_Positioning_System" target="_blank">Wikipedia: GPS</a>
+    (<a href="questions.html?q=q-lec2">Questions</a>)</span>
   </td>
 
-  <td id="2025-2-7"></td>
+  <td id="2025-2-7" class="special"><span class="date">Feb 7</span><br /><i>iOS Tutorial 10am-11am. Room TBD.</i></td>
 </tr>
 
 <tr> <!-- week of Feb 10 -->

@@ -367,7 +367,7 @@ PLANET!"}
 Check-offs {#checkoff}
 ----------
 
-We will hold checkoffs during Office Hours and
-during the iOS Tutorial on Friday, February 19.
+We will hold checkoffs during office hours and the optional iOS tutorial on Friday Feb 7. Lab 0 is due the next Tuesday, so we will also hold checkoffs after that date.
+
 :::
 :::
