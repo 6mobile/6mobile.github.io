@@ -89,7 +89,7 @@ table.calendar thead tr {
   <td id="2025-2-5"></td>
 
   <td id="2025-2-6" class="lecture"><span class="date">Feb 6</span><br />
-    <b>LEC 2:</b> Fundamentals of IoT Localization<br />
+    <b>LEC 2:</b> Fundamentals of IoT Localization (<a href="./lectures/Lec2-slides-localization-2025.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="http://onlinelibrary.wiley.com.libproxy.mit.edu/doi/10.1002/0470092335.ch6/pdf" target="_blank">Location-based Services</a>,
     <a href="https://en.wikipedia.org/wiki/Global_Positioning_System" target="_blank">Wikipedia: GPS</a>
