@@ -160,8 +160,9 @@ table.calendar thead tr {
   <td id="2025-2-27" class="lecture"><span class="date">Feb 27</span><br />
     <b>LEC 7:</b> Batteryless Connectivity & Smart Cities<br />
     <span class="reading"><b>Preparation:</b> Read
-    <a href="https://web.cs.ucla.edu/~omid/Papers/Mobicom18a.pdf" target="_blank">Hacking RFIDs</a></span><br />
-    <span class="reading"><b>Assigned:</b> Lab 2</span>
+    <a href="https://web.cs.ucla.edu/~omid/Papers/Mobicom18a.pdf" target="_blank">Hacking RFIDs</a> and <a href="https://conferences.sigcomm.org/sigcomm/2015/pdf/papers/p297.pdf">Caraoke</a></span><br />
+    (<a href="questions.html?q=q-lec7">Questions</a>) </br>  
+     <span class="reading"><b>Assigned:</b> Lab 2</span>
   </td>
 
   <td id="2025-2-28"></td>
