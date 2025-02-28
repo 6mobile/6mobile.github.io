@@ -42,7 +42,7 @@ the code to extract sensor readings from packets sent by the Anthill.
 Getting Started {#gettingstarted}
 ---------------
 Start by downloading the [Anteater App Skeleton for Xcode 11+/iOS
-13+](codes/lab1/anteater-swift-4.2-xcode11.zip). Uncompress this file to create a directory called
+13+](codes/lab2/anteater-swift-4.2-xcode11.zip). Uncompress this file to create a directory called
 \"anteater-swift-blank\". Open the anteater.xcodeproj file in this
 directory in XCode. You should be able to build and run the project in
 the simulator or your phone.
