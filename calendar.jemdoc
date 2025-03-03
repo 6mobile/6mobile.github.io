@@ -184,6 +184,7 @@ table.calendar thead tr {
     <b>LEC 9:</b> Pothole detection<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="http://nms.csail.mit.edu/papers/p2-mobisys-2008.pdf" target="_blank">Pothole Patrol</a></span><br />
+    (<a href="questions.html?q=q-lec9">Questions</a>)<br/>
     <span class="deadline"><b>DUE:</b> Pset 1</span>
   </td>
 
