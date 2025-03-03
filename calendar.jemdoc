@@ -172,10 +172,10 @@ table.calendar thead tr {
   <td id="2025-3-3"></td>
 
   <td id="2025-3-4" class="lecture"><span class="date">Mar 4</span><br />
-    <b>LEC 8:</b> Intro to Inertial Sensing; Activity Recognition<br />
+    <b>LEC 8:</b> Intro to Inertial Sensing; Activity Recognition (<a href="./lectures/Lec8-slides-inertial-2025.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Preparation:</b> Read
-    <a href="materials/Fundamentals_of_Intertial_Navigation_Chap2.pdf">Developments of Inertial Sensing</a>
-    and <a href="materials/Basic_Principles_Strapdown_Chap3.pdf">Principles of Inertial Sensing (Section 3.1 and 3.2 only)</a><br/>(<a href="questions.html?q=q-lec8">Questions</a>)</span>
+    <a href="https://app.knovel.com/s.v?ZmDLuHfH">Developments of Inertial Sensing</a>
+    and <a href="https://app.knovel.com/s.v?hwJWJdZf">Principles of Inertial Sensing (Section 3.1 and 3.2 only)</a><br/>(<a href="questions.html?q=q-lec8">Questions</a>)</span>
   </td>
 
   <td id="2025-3-5"></td>
