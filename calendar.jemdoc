@@ -198,7 +198,8 @@ table.calendar thead tr {
     <b>LEC 10:</b>Self-Driving Cars<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Guan_Through_Fog_High-Resolution_Imaging_Using_Millimeter_Wave_Radar_CVPR_2020_paper.pdf" target="_blank">Hawkeye: Through Fog High Resolution Imaging Using Millimeter Wave Radar</a></span><br />
-    <span class="reading"><b>Assigned:</b>Lab 3</span><br />
+    (<a href="questions.html?q=q-lec10">Questions</a>)<br/>
+   <span class="reading"><b>Assigned:</b>Lab 3</span><br />
     <span class="deadline"><b>DUE:</b> Lab 2</span>
   </td>
 
