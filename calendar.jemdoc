@@ -195,7 +195,7 @@ table.calendar thead tr {
   <td id="2025-3-10"></td>
 
   <td id="2025-3-11" class="lecture"><span class="date">Mar 11</span><br />
-    <b>LEC 10:</b>Self-Driving Cars<br />
+    <b>LEC 10:</b>Self-Driving Cars (<a href="./lectures/lecture_10_self_driving_cars.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Guan_Through_Fog_High-Resolution_Imaging_Using_Millimeter_Wave_Radar_CVPR_2020_paper.pdf" target="_blank">Hawkeye: Through Fog High Resolution Imaging Using Millimeter Wave Radar</a></span><br />
     (<a href="questions.html?q=q-lec10">Questions</a>)<br/>
