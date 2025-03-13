@@ -210,12 +210,13 @@ table.calendar thead tr {
     <span class="reading"><b>Preparation:</b> Read
     <a href="https://dl.acm.org/doi/abs/10.1145/3570361.3613281">APG: Audioplethysmography for Cardiac Monitoring in Hearables</a></span><br/>
     (<a href="questions.html?q=q-lec11">Questions</a>)<br/>
-    <span class="reading"><b>Assigned:</b> Pset 2</span><br />
     <span class="reading"><b>Assigned:</b> Project Proposal Instructions</span>
   </td>
   
 
-  <td id="2025-3-14"></td>
+  <td id="2025-3-14">
+  <span class="reading"><b>Assigned:</b> Pset 2</span><br />
+  </td>
 </tr>
 
 <tr> <!-- week of Mar 17 -->
