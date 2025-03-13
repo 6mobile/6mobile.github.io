@@ -208,7 +208,7 @@ table.calendar thead tr {
     <td id="2025-3-18" class="lecture"><span class="date">Mar 13</span><br />
     <b>LEC 11:</b>Earables and Health<br />
     <span class="reading"><b>Preparation:</b> Read
-    <a href="https://dl.acm.org/doi/abs/10.1145/3570361.3613281">APG: Audioplethysmography for Cardiac Monitoring in Hearables</a></span><br/>
+    <a href="https://dl.acm.org/doi/abs/10.1145/3570361.3613281">APG: Audioplethysmography for Cardiac Monitoring in Hearables</a></span>(<a href="./lectures/lect_11_pdf.pdf" target="_blank">Slides</a>)<br/>
     (<a href="questions.html?q=q-lec11">Questions</a>)<br/>
     <span class="reading"><b>Assigned:</b> Project Proposal Instructions</span>
   </td>
