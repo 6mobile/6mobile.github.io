@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="6.1820 : Mobile and Sensor Computing Course" />
+  <title>6.1820 - Lab 4</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-light.min.css" />
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script><br />
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">6.1820 - Lab 4</h1>
+</header>
+<div id="header_wrap" class="outer">
+<section id="main_content" class="inner">
+<h1 id="project_title"><a href="../index.html">6.1820</a></h1>
+<h2 id="project_tagline">Lab 4: Map Inference from GPS Traces</h2>
+<p>Assigned: 2025-03-20<br />
+Due: 2025-04-08<br />
+</p>
+</section>
+</div>
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#sec1">Section 1 — Implement K-Means-Clustering Map
+Inference Algorithm</a></li>
+<li><a href="#sec2">Section 2 — Evaluation</a></li>
+<li><a href="#sec3">Section 3 — Topology-Sensitive Evaluation
+Metric</a></li>
+<li><a href="#submission">Submission and Checkoff</a></li>
+</ul>
+<div style="color:#a00">
+
+</div>
+<h2 id="overview">Overview</h2>
+<p>Map inference is a process of automatically producing maps from
+collected GPS traces. In this lab, each trace contains multiple
+observations, each of which is a 2D location. While a single trace
+corresponds to a short drive and each data point is noisy, we can use
+multiple traces from the same area to collectively infer the underlying
+road network, reducing noise in individual observations. You will
+explore two map inference algorithms, k-means clustering and kernel
+density estimation, as well as evaluation metrics for map inference.</p>
+<p>Specifically, you will</p>
+<ul>
+<li>Implement a simplified k-means clustering map inference
+algorithm</li>
+<li>Compare the performance of the clustering algorithm to that of a
+kernel density estimation algorithm qualitatively, and also using a
+provided geometric evaluation metric</li>
+<li>Develop a topology-sensitive evaluation metric</li>
+</ul>
+<p>The kernel density estimation algorithm is proposed by Biagioni and
+Eriksson from UIC: <a
+href="https://dl.acm.org/doi/10.1145/2424321.2424333">Map inference in
+the face of noise and disparity</a> (<a
+href="https://ist.mit.edu/news/vpn_intro">VPN to MIT network</a>
+required; <a
+href="https://www.cs.uic.edu/~jakob/papers/biagioni-gis12.pdf">alternate
+link</a>). You are welcome to read the paper for more detailed
+background information. It might also be helpful to look at the <a
+href="https://6mobile.github.io/materials/mapinference.pdf">slides from
+the 2018 version of the class</a>, which explains both algorithms as
+well as several evaluation metrics. The code in this lab is adapted from
+the code from the paper.</p>
+<p>Start by <a href="codes/lab4/lab4.zip">downloading the Python code
+for this lab</a>. These files are included:</p>
+<ul>
+<li><strong><code>infer_kmeans.py</code></strong>: you will implement
+k-means clustering map inference algorithm here.</li>
+<li><strong><code>infer_kmeans_tests.py</code></strong>: some unit tests
+to make sure you implemented <code>infer_kmeans.py</code>
+correctly.</li>
+<li><strong><code>infer_kde.py</code></strong>: this is a provided
+kernel density estimation map inference algorithm that you will evaluate
+in Section 2.</li>
+<li><strong><code>trace_generator.py</code></strong>: a basic simulator
+to synthetically generate GPS traces with a specified level of Gaussian
+noise.</li>
+<li><strong><code>eval_geo.py</code></strong>: a geometric evaluation
+metric.</li>
+<li><strong><code>visualize.py</code></strong>: visualize functions for
+various spatial data.</li>
+<li><strong><code>util.py</code></strong>: various utility functions and
+classes to load traces, represent graphs, etc.</li>
+<li><strong><code>infer_kde_lib.py</code></strong>: utility functions
+for the KDE algorithm.</li>
+<li><strong><code>requirements.txt</code></strong>: python dependencies
+to be installed by pip.</li>
+<li><strong><code>data</code></strong> directory:
+<ul>
+<li><strong><code>cambridge.xml</code></strong>: ground truth data of
+Cambridge map (XML).</li>
+<li><strong><code>cambridge.graph</code></strong>: ground truth data of
+Cambridge map (<code>.graph</code>).</li>
+<li><strong><code>trips_uchicago_meters</code></strong>: data from
+shuttles on the UIC campus, for Section 2.</li>
+<li><strong><code>section3_graphs</code></strong>: simple graphs for
+Section 3</li>
+</ul></li>
+</ul>
+<h3 id="installation">Installation</h3>
+<p>This code is tested with Python 3.6 and other python libraries,
+including OpenCV 4.2. (Python 2 is not supported.) Follow the
+instructions below to use virtualenv and install the required
+packages.</p>
+<ol type="1">
+<li><p>(Strongly recommended) Install <a
+href="https://virtualenv.pypa.io/en/latest/installation.html">virtualenv</a>
+and <a
+href="https://virtualenvwrapper.readthedocs.io/en/latest/install.html">virtualenvwrapper</a>.
+(See also: <a
+href="https://python-guide-cn.readthedocs.io/en/latest/dev/virtualenvs.html">another
+guide</a>.) Run the following two lines:</p>
+<pre class="bash"><code>python -m pip install virtualenv
+python -m pip install virtualenvwrapper</code></pre>
+<p>Then add the following lines to your shell startup file, e.g.
+<code>.bashrc</code>, <code>.bash_profile</code> for bash or
+<code>.zshrc</code> for zsh (run <code>echo $0</code> to see which shell
+you are using).</p>
+<pre class="bash"><code>export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh</code></pre>
+<p>After editing it, reload the startup file (e.g., run
+<code>source ~/.bash_profile</code>) or open a new terminal.</p>
+<p>Note that if you get an error like
+<code>/usr/local/bin/virtualenvwrapper.sh: No such file or directory</code>,
+that means your <code>virtualenvwrapper.sh</code> is installed somewhere
+else, e.g. with anaconda’s python.</p>
+<pre class="bash"><code>$ which python # python3 if you use python3
+/Users/username/anaconda/bin/python
+$ which virtualenv
+/Users/username/anaconda/bin/virtualenv
+$ ls /Users/username/anaconda/bin/virtualenv*
+# see if there are virtualenvwrapper.sh installed here</code></pre>
+<p>You need to match the path by adding the following lines to your
+shell startup file instead.</p>
+<pre class="bash"><code>export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /Users/username/anaconda/bin/virtualenvwrapper.sh</code></pre></li>
+<li><p>If you succesfully installed virtualenvwrapper, make a virtualenv
+called <code>6mobile</code> (or a name of your choosing) with python 3.6
+or newer. (Python 3.7 and 3.8 should also work.)</p>
+<pre class="bash"><code>mkvirtualenv --python=`which python3.6` 6mobile</code></pre>
+<p>You should automatically be in the newly created virtualenv. To
+verify, the outputs of <code>which python</code> and
+<code>python --version</code> should be similar to this:</p>
+<pre class="bash"><code>$ which python
+/Users/username/.virtualenvs/6mobile/bin/python
+$ python --version
+Python 3.6.x</code></pre>
+<p>If you start a new terminal, you can work in this virtualenv by
+running <code>workon 6mobile</code>. To switch to the default python,
+run <code>deactivate</code>.</p></li>
+<li><p>Download the starter code, uncompress it and <code>cd</code> into
+<code>lab4</code> directory. From that directory, install required
+packages within the virtualenv.</p>
+<pre class="bash"><code>pip install -r requirements.txt</code></pre>
+<p><strong>Alternatively</strong>, if you do not use virtualenv, you can
+install packages with the gloabl Python interpreter. If your default
+<code>python</code> is not Python 3.6 or newer, use
+<code>python3.6</code> to install pacakages and run the codes.</p>
+<pre class="bash"><code>python -m pip install -r requirements.txt</code></pre></li>
+<li><p>Test your installation.</p>
+<pre class="bash"><code>$ python -c &quot;import cv2; print(cv2.__version__)&quot;
+4.2.0</code></pre></li>
+</ol>
+<!-- 1.  If you recently upgraded your macOS, run: -->
+<!--     ```bash -->
+<!--      xcode-select --install -->
+<!--      ``` -->
+<h2 id="sec1">Section 1 — Implement K-Means-Clustering Map Inference
+Algorithm</h2>
+<p>You will implement the k-means clustering map inference algorithm.
+The algorithm operates in four phases:</p>
+<ul>
+<li><strong>Get markers</strong>: drop markers along each trace at fixed
+intervals</li>
+<li><strong>Initialize clusters</strong>: find an initial set of cluster
+centers</li>
+<li><strong>k-means</strong>: run k-means clustering to identify
+clusters of markers</li>
+<li><strong>Generate edges</strong>: process the traces to add edges
+between clusters</li>
+</ul>
+<p><strong>Get markers.</strong> (This phase is already implemented for
+you.) The algorithm starts by extracting markers to use as points for
+clustering. Although we could simply use the raw GPS
+samples/observations as markers, will not work well if the GPS samples
+are very far apart: recall that in the fourth phase, we pass through
+each trace, and if successive markers are in different clusters, we
+connect those clusters; if the samples are too far apart, then we might
+end up adding an edge that bypasses an intermediate cluster:</p>
+<p><img src="images/lab4/bad_connect.png" width="325"
+height="200" /></p>
+<p>Below, we instead add markers at a small fixed distance along the
+trace. When we add edges later, it is unlikely that the edges will
+bypass a cluster:</p>
+<p><img src="images/lab4/markers.png" width="600" /></p>
+<p>Each marker will be associated with not only a position, but also a
+<strong>bearing</strong>. The bearing indicates which direction the
+vehicle associated with the marker is facing, and is measured as an
+angle in degrees from the positive x axis. Bearings of the markers
+(green dots in the right diagram) are calculated from line segments that
+connect consecutive GPS observations (black dots in the left diagram).
+See the comments in the code of the <code>get_markers</code> function
+for an example.</p>
+<p><strong>Initialize clusters.</strong> Next, we select a set of
+initial cluster centers. k-means clustering will improve these cluster
+centers in the next phase, but it is important to have a good initial
+set of centers or we will still end up with bad clusters.</p>
+<p>To get the initial centers, we will repeatedly randomly sample a
+marker from the set of markers that have not yet been assigned to a
+cluster. After selecting a marker as a center, any other markers that
+fall within a certain distance threshold and bearing threshold to the
+selected marker will be assigned to the cluster of the selected marker.
+We repeat this process until all markers are assigned to some
+cluster.</p>
+<p><span style="color:#a00">You should not mutate the
+<code>markers</code> variable in the <code>initialize_clusters</code>
+method (e.g. you can copy it into another list first).</span></p>
+<p><strong>k-means clustering.</strong> Now, we run k-means clustering
+to refine our clusters. We will take into account both distance and
+bearing difference when we perform k-means clustering; you can think of
+this as if we have a three-dimensional space, where the distance
+function used in clustering takes into account not only the
+two-dimensional distance, but also the bearing difference.</p>
+<p>Wikipedia has a <a
+href="https://en.wikipedia.org/wiki/K-means_clustering#Standard_algorithm_(naive_k-means)">good
+visualization</a> of k-means clustering (see "Demonstration of the
+standard algorithm").</p>
+<p><strong>Generate edges.</strong> Finally, we add edges between
+clusters. We initialize a road network graph where the center of each
+cluster is a vertex (but no edges have been added yet), and then process
+the traces one by one. For each trace, we iterate over the markers that
+we created for that trace in the first phase. If two successive markers
+belong to different clusters, then we connect those clusters. Once we
+have done this for all traces, we output the resulting road network
+graph.</p>
+<p>In <code>infer_kmeans.py</code>, you should implement the missing
+functions:</p>
+<ul>
+<li><code>initialize_clusters</code> (this should return a list of
+<code>Cluster</code> objects)</li>
+<li><code>kmeans</code></li>
+<li><code>generate_edges</code></li>
+</ul>
+<p>As you implement each step, run <code>infer_kmeans_tests.py</code> to
+make sure your implementation is running correctly. The tests are not
+exhaustive. You can qualitatively check the visualization in the next
+section to see if the algorithm works as expected.</p>
+<h2 id="sec2">Section 2 — Evaluation</h2>
+<p>You will now compare the k-means clustering and kernel density
+estimation map inference algorithms on the Cambridge map data,
+synthetically generated by <code>trace_generator.py</code> in various
+configurations in Task 1. (The implementation of the kernel density
+estimation map inference algorithm is already provided.) You will also
+evaluate the two algorithms on the UIC shuttle dataset (from the
+Biagioni and Eriksson paper) in Task 2.</p>
+<p>Here is an example command to generate traces for evaluation.</p>
+<pre class="bash"><code>python trace_generator.py -m data/cambridge.xml -o traces/ -n 100 -g 4 -i 30</code></pre>
+<p>This will generate 100 random traces where GPS samples are taken 30
+meters apart and have 4 meter standard deviation of Gaussian noise. The
+traces will be saved in the folder <code>output</code>. Each trace will
+correspond to a short trip within the road network in the map. With 100
+traces, the data should cover almost the whole map. To see more detailed
+explanations of the arguments, run
+<code>python trace_generator.py --help</code>.</p>
+<p>You can then run the infer_kmeans and infer_kde algorithms. Note that
+for 100 traces, <code>infer_kmeans.py</code> takes about 15 minutes and
+<code>infer_kde.py</code> takes about 5 minutes to run. To make sure
+your infer_kmeans algorithm work correctly, you may want to generate a
+smaller number of traces (e.g. <code>-n 5</code>) and check the result
+with this small dataset first, before moving on to the large set.</p>
+<pre class="bash"><code>python infer_kmeans.py traces output
+python infer_kde.py traces output</code></pre>
+<p>The commands above will generate
+<code>output/kmeans-inferred.graph</code> and
+<code>output/kde-inferred.graph</code>. The <code>.graph</code> files
+are defined by the <code>Graph</code> class in <code>util.py</code> and
+can be loaded with <code>Graph.from_file</code>.</p>
+<p>To visualize the graphs, run</p>
+<pre class="bash"><code>python visualize.py</code></pre>
+<p>which will by default run the following
+<code>visualize_graphs_overlay</code> method to visualize an overlay of
+the actual, K-means, and KDE graphs in
+<code>graphs-overlay.svg</code>.</p>
+<pre class="python"><code>def visualize_graphs_overlay(inferred_dir):
+    actual_graph = Graph.from_file(os.path.join(&quot;data&quot;, &quot;cambridge.graph&quot;))
+    kmeans_graph = Graph.from_file(os.path.join(inferred_dir, &quot;kmeans-inferred.graph&quot;))
+    kde_graph = Graph.from_file(os.path.join(inferred_dir, &quot;kde-inferred.graph&quot;))
+
+    viz = Visualize()
+    # color can be a word or svgwrite.rgb(r, g, b) where r, g, b are in range 0 to 255
+    viz.draw_graph(actual_graph, color=&quot;grey&quot;, width=3)
+    viz.draw_graph(kmeans_graph, color=&quot;red&quot;, width=1)
+    viz.draw_graph(kde_graph, color=&quot;green&quot;, width=1)
+    viz.save(os.path.join(inferred_dir, &quot;graphs-overlay.svg&quot;))</code></pre>
+<p>The created svg file can be opened in a web browser. Feel free to
+modify <code>visualize.py</code> to your visualization needs.</p>
+<p>Finally, get the result from the geometric evaluation metric:</p>
+<pre class="bash"><code>python eval_geo.py data/cambridge.graph output/kmeans-inferred.graph
+python eval_geo.py data/cambridge.graph output/kde-inferred.graph</code></pre>
+<p>This will give you precision, recall, and F1 score. The details of
+these metrics will be explained in <a href="#sec3">Section 3</a>.</p>
+<h3
+id="task-1-analyze-performance-with-respect-to-sparsity-and-noise">Task
+1: Analyze Performance with respect to Sparsity and Noise</h3>
+<p>Using <code>trace_generator.py</code>, generate traces with various
+sparsity – start with 30 meters, and then try at least four other values
+while keeping GPS noise at 4 meters. Pick a reasonably different set of
+values.</p>
+<p>Run both map inference algorithms and plot precision, recall, and F1
+scores based on geometric evaluation as a function of sparsity. (See
+Figure 11 on the <a
+href="https://www.cs.uic.edu/~jakob/papers/biagioni-gis12.pdf">paper</a>
+as an example.)</p>
+<p>Then, do the same with GPS noise – start with 4 meters, and try at
+least four other values while keeping sparsity at 30 meters.</p>
+<p>Also use the visualize function in <code>util.py</code> to
+qualitatively compare the inferred maps. How well does the
+<code>eval_geo.py</code> score correspond to your qualitative
+comparison?</p>
+<h3 id="task-2-run-on-uic-dataset">Task 2: Run on UIC Dataset</h3>
+<p>Run both map inference algorithms on the UIC dataset. Output SVG
+images of the generated graphs using <code>visualize</code> and
+qualitatively analyze the performance differences between the
+algorithms. (We do not have a ground truth graph file for this region to
+use for <code>eval_geo.py</code>.)</p>
+<h2 id="sec3">Section 3 — Topology-Sensitive Evaluation Metric</h2>
+<p>The geometric evaluation metric that we provided is very simple. It
+first lays down markers along the ground truth road network and the
+inferred road network, with a fixed distance between markers. Then, it
+iterates through both sets of markers and tries to match each marker
+with another marker in the other set: as long as there is some marker in
+the other set that is within a matching distance of the marker, then the
+marker is considered successfully matched. Then:</p>
+<ul>
+<li><span class="math inline">\(\text{precision} = \dfrac{\text{matched
+markers for inferred
+network}}{\text{total markers for inferred network}}\)</span></li>
+<li><span class="math inline">\(\text{recall} = \dfrac{\text{matched
+markers for ground truth
+network}}{\text{total markers for ground truth network}}\)</span></li>
+<li><span class="math inline">\(\text{F1 score} = \dfrac{2 \cdot
+\text{precision} \cdot
+\text{recall}}{\text{precision} + \text{recall}}\)</span> (harmonic mean
+of precision and recall)</li>
+</ul>
+<p>Note that the metric does not enforce a one-to-one matching. So, for
+example, even a road is duplicated several times in the inferred
+network, it will still have perfect precision and recall along the
+copies of that road as long as they are all within the matching distance
+of the actual road:</p>
+<p><img src="images/lab4/geobad.png" width="600" /></p>
+<p>Above, the black lines represent the inferred graph while the blue
+line represents the ground truth road. Since the black markers are all
+within the matching distance to at least one blue marker, and we are not
+enforcing a one-to-one matching, precision and recall are both 1.</p>
+<p>This metric has several drawbacks. One major drawback is that it
+won't penalize for small topological differences (where the positions of
+roads are correct but the way that they connect at intersections
+differs) in the maps; for example, the ground truth graph might have a
+four-way intersection, while the inferred graph might have all four
+roads stop before they intersect:</p>
+<p><img src="images/lab4/geobad2.png" /></p>
+<p>For most purposes of the map (like getting directions from one
+location to another), these are actually very significant
+differences.</p>
+<p>Your task in this section is to implement an evaluation metric that
+penalizes for these kinds of topological differences. You can implement
+one of the metrics described in the <a
+href="https://6mobile.github.io/materials/mapinference.pdf">2018
+slides</a> (TOPO/holes-and-marbles and shortest path in Slides 65-82),
+or design and implement your own. Your metric can take into account the
+directionality of edges, but it does not have to. Run your metric on the
+graphs inferred earlier in Task 1, and create corresponding plots
+(include precision/recall plots if your metric uses precision and
+recall).</p>
+<p>For <strong>holes-and-marbles</strong>, you would randomly pick a
+vertex in the ground truth graph, and find the nearest vertex in the
+other graph. Then, do a breadth first search from the vertex selected in
+each graph, and place markers every 10 meters or so along the edges;
+stop the search when you exceed some radius away from the start vertex
+(e.g., 300 meters). Lastly, match the markers between the graphs and
+compute precision and recall. (This evaluation metric is proposed in
+Section 3 of <a
+href="https://www.cs.uic.edu/~jakob/papers/biagioni-trb12.pdf">this
+paper</a>.)</p>
+<p>For <strong>shortest path</strong>, one metric would be to randomly
+select a pair of vertices in the ground truth graph, find the nearest
+vertices in the other graph, and then compare the distance of the
+shortest path between the vertices. Then, repeat this process several
+times. This metric would not match the precision/recall framework, but
+think about how you would quantitatively compare how good the shortest
+path distances between each pair of vertices match, then average those
+scores together. You may impose the maximum distance between the source
+and destination vertices in the randomization to increase the
+probability of finding a path.</p>
+<p>This section is open-ended, as long as your metric is reasonable.
+These are some ideas and your exact implementation can vary. Adjusting
+parameters (e.g. marker frequency and match distance for
+holes-and-marbles or the maximum distance between the source and
+destination vertices for shortest path) will largely affect the final
+scores.</p>
+<p>We have included two pairs of actual/inferred graphs in the
+<code>data/section3_graphs/</code> folder for which
+<code>eval_geo.py</code> gives F1 score of 1.0. Your metric should give
+a non-perfect score for these two pairs. Visualize these graphs using
+functions in <code>visualize.py</code> to understand these test
+graphs.</p>
+<h2 id="submission">Submission and Checkoff Instructions</h2>
+<p>Write up your answers to the following items in a single PDF file and
+name it <strong>lab4_kerberos.pdf</strong> or
+<strong>lab4_kerberos1+kerberos2.pdf</strong> (e.g. lab4_jradema.pdf or
+lab4_jradema+fadel.pdf). Upload the file to gradescope by <strong>Apr 8,
+11:59 PM</strong>. If you work with a partner, you only have to submit
+once. You do not need to submit your code, but we may ask to look at
+your code during the checkoff.</p>
+<ol type="1">
+<li>Names and MIT emails (including your lab partner, if
+available).</li>
+<li>Provide a plot for precision, recall, and F1 scores as a function of
+sparsity based on the geometric evaluation in Section 2.</li>
+<li>Provide a plot for precision, recall, and F1 scores as a function of
+GPS noise based on the geometric evaluation in Section 2.</li>
+<li>Provide a visualization that compares the actual, K-means, and KDE
+graphs (like <code>graphs-overlay.svg</code> from
+<code>visualize.py</code>) for the Cambridge map with the default trace
+parameters.</li>
+<li>As a comparison, provide similar visualizations with different trace
+parameters, including at least one generated with different sparsity and
+at least one with different GPS noise.</li>
+<li>Provide a similar visualization for the UIC dataset. No actual graph
+is not available and does not have to be included.</li>
+<li>Briefly explain the topology-sensitive evaluation metric that you
+implement in Section 3.</li>
+<li>Provide a visualization that compares <code>actual1.graph</code> and
+<code>inferred1.graph</code> in <code>data/section3_graphs</code>. Do
+the same with <code>actual2.graph</code> and
+<code>inferred2.graph</code>.</li>
+<li>Based on your evaluation metric, what are the scores of the K-means
+inferred graphs from Section 2? Do the same with the KDE inferred
+graphs. If your metric uses precision and recall, how do they compare to
+the geometric evaluation in Section 2?</li>
+<li>Based on your evaluation metric, what are the scores of the two
+graphs in Section 3?</li>
+<li>Estimated number of hours you spent on this lab per person.</li>
+<li>Any comments/suggestions for the lab? Any questions for the
+checkoff? (Optional)</li>
+</ol>
+</section>
+</div>
+</body>
+</html>
