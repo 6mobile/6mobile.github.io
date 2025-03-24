@@ -130,8 +130,8 @@ Due: 2025-04-08<br />
 <h3 id="sec2.2">Section 2.2: Implement <code>idx_to_distance</code></h3>
 <p>In this task you will estimate the distance using the peak location. To do this you need to implement the “idx_to_distance” function which takes the peak location as input. Specifically you need to do the following:</p>
 <ol>
-    <li> Implement the following equation: <p>𝑑𝑖𝑠𝑡𝑎𝑛𝑐𝑒=(Δ𝑓.𝑠𝑙𝑜𝑝𝑒.𝑣)/2</p>
-        <p>where "v" is the speed of sound in air, "slope" is the slope of your FMCW chirp and " Δ𝑓 " corresponds to the peak location.</p>
+    <li> Implement the following equation: <p>distance=(Δf*v)/(2*slope)</p>
+        <p>where "v" is the speed of sound in air, "slope" is the slope of your FMCW chirp (bandwidth / chirp duration) and " Δ𝑓 " corresponds to the peak location.</p>
 </li>
     <li>Store the result in the “distance” variable and return it as an output of the function.</li>
 </ol>
