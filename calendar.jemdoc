@@ -268,7 +268,7 @@ table.calendar thead tr {
   <td id="2025-4-2"></td>
 
   <td id="2025-4-3" class="lecture"><span class="date">Apr 3</span><br />
-    <b>LEC 15:</b> Ocean IoT<br />
+    <b>LEC 15:</b> Ocean IoT (<a href="./lectures/lec15-slides-oceans-2025.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="http://www.mit.edu/~fadel/papers/PAB-paper.pdf" target="_blank">Underwater Backscatter Networking</a></span>
     <br/>(<a href="questions.html?q=q-lec15">Questions</a>)
