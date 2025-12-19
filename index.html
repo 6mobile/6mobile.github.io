@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>6.1820/MAS.453: Mobile and Sensor Computing, Spring 2026</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-item"><a href="index.html" class="current">Information</a></div>
+<div class="menu-item"><a href="calendar.html">Calendar</a></div>
+<div class="menu-item"><a href="answers.html">Answer&nbsp;Submission</a></div>
+<!-- <div class="menu-category">Problem Sets</div>
+<div class="menu-item"><a href="https://www.gradescope.com/courses/973712">Gradescope&nbsp;Submission</a></div>
+<div class="menu-category">Project</div>
+<div class="menu-category">Exam</div>
+<div class="menu-item"><a href="materials/6808_2020_exam.pdf">2020&nbsp;Midterm</a></div>
+<div class="menu-item"><a href="materials/6808_2021_QUIZ.pdf">2021&nbsp;Midterm</a></div>
+<div class="menu-item"><a href="materials/6808_2020_exam_sol.pdf">2020&nbsp;Solutions</a></div>
+<div class="menu-item"><a href="materials/6_808_2021_QUIZ_Solutions.pdf">2021&nbsp;Solutions</a></div>
+<div class="menu-category">Labs</div> -->
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>6.1820/MAS.453: Mobile and Sensor Computing, Spring 2025</h1>
+</div>
+<p><b>Instructors:</b> <a href="http://www.mit.edu/~fadel/">Fadel Adib</a></p>
+<p><b>TAs:</b> Maisy Lam (<a href="mailto:mllam@mit.edu">mllam@mit.edu</a>)</p>
+<p><b>Course Staff Email:</b> <a href="mailto:6mobile@mit.edu">6mobile@mit.edu</a></p>
+<p><b>Lectures:</b> Tues/Thurs 1-2:30pm in 66-168 </p>
+<!-- <p><b>Office Hours:</b></p>
+<ul>
+<li><p>Fadel: By appointment</p>
+</li>
+<li><p>TA:</p>
+<ul>
+<li><p>Tuesday: 2:30-3:30 PM (Maisy, in-person in E14-493)</p>
+</li>
+</ul> -->
+
+</li>
+</ul>
+<h1>Course Overview</h1>
+<p>The ubiquity of sensor-equipped smartphones, combined with the
+widespread availability of low-power wireless communication and
+sensing modules, has led to a renewed interest in sensor computing,
+aka the “Internet of Things” (IoT). 6.1820 is an advanced undergraduate
+course designed to study the fundamental sensing, computing, and
+communication software technologies at the core of the recent flurry
+of activity on IoT. In addition to exposure to fundamental
+technologies (power management, positioning, ranging, wireless radios,
+inertial sensors, etc), students will learn how to design and
+implement (1) libraries and applications on mobile devices that
+interact with internal and external sensors, (2) server-side modules
+for computation and storage, and (3) embedded software.</p>
+<p>Topics include the principles, practices, and emerging applications in:</p>
+<ul>
+<li><p>Positioning technologies, including GPS, WiFi and cellular localization</p>
+</li>
+<li><p>Wireless networking, including BLE, WiFi, Zigbee, as well as multi-hop and store-and-forward (&ldquo;muling&rdquo;)</p>
+</li>
+<li><p>Resource constraints, including power, bandwidth, and storage</p>
+</li>
+<li><p>Inertial sensing, including accelerometers, gyroscopes, IMUs, dead-reckoning</p>
+</li>
+<li><p>Other types of sensors, e.g., microphones and cameras</p>
+</li>
+<li><p>Application studies</p>
+</li>
+<li><p>Embedded hardware and software architecture</p>
+</li>
+<li><p>Embedded system security</p>
+</li>
+<li><p>iOS APIs for accessing various sensing and wireless networking technologies</p>
+</li>
+</ul>
+<h1>Announcements</h1>
+<h1>About the Course</h1>
+<h2>Units</h2>
+<p>12 (3-0-9). Requirements satisfied: AUS2, DLAB2, and II</p>
+<h2>Prerequisites</h2>
+<p>6.1800 or permission of instructor.</p>
+<h2>Grading policy</h2>
+<p>Grading in 6.1820 will consist of 5 labs, a midterm, a final project, 2 psets,
+and class participation, broken down as follows:</p>
+<ul>
+<li><p><b>Labs: 25%</b></p>
+</li>
+<li><p><b>Midterm: 15%</b></p>
+</li>
+<li><p><b>Psets: 10% (2 at 5% each)</b></p>
+</li>
+<li><p><b>Final Project: 40%</b></p>
+</li>
+<li><p><b>Participation: 10%</b></p>
+</li>
+</ul>
+<h2>Participation</h2>
+<p>We expect you to attend all lectures, unless there are pressing or
+unforeseen conflicts. Conflicts that are persistent (e.g., registering
+for another class at the same time and &ldquo;splitting&rdquo; attendance between
+them) are not excused.</p>
+<h2>Readings</h2>
+<p>Most classes have reading questions. Please send your response to the
+questions to Google forms
+before class. Answers
+will be accepted by any time before the class starts. Each student may
+<b>skip one question</b> during the semester without affecting their
+grade. This is a part of the participation score.</p>
+<h2>Labs and Software Development</h2>
+<p>The class will involving programming for iPads in XCode, which
+requires a Mac for development. We will loan out Macs and iPads to students
+who do not have them.</p>
+<p>Submitting a lab consists of two parts: </p>
+<ol>
+<li><p>Submit a PDF of your responses to the questions listed at the end of the lab instructions to gradescope by the due date listed there.</p>
+</li>
+<li><p>Attend office hours within 1 week after the due date for check-off from the TAs</p>
+</li>
+</ol>
+<p>Note: You only need to attend a check-off for Lab 0</p>
+<h2>Late Policy</h2>
+<p>You have a total of 72 late hours for the semester. You can choose to use these
+however you want: e.g., 5 hours for Lab1, 4 for Lab2, etc.</p>
+<p>Each hour late in excess of 72 hours will penalize the corresponding lab's grade by
+1%, up to a maximum of 50%. Late hours are allocated greedily, so they are allocated
+to earlier labs before later labs.</p>
+<p><b>How to best use late hours?</b> Late hours are intended for cases where you fall behind
+due to deadlines in other classes, job interviews, MIT athletic events, illness, etc.
+For extensions under extenuating circumstances (e.g., you are sick for a week), we
+require a letter from one of the student deans.</p>
+<h2>AI Policy</h2>
+<p>This policy outlines the permitted and prohibited uses of AI in this course.</p>
+<p><b>Permitted Uses of AI</b></p>
+<ul>
+<li><p><b>Debugging, Refactoring, and Optimizing Code:</b> You may use AI to help with debugging, improving efficiency, and refactoring your code.</p>
+</li>
+<li><p><b>Concept Explanation:</b> You may use AI to explain a concept to you, but be aware that AI-generated explanations may contain errors or biases. You’re advised to verify the provided information.</p>
+</li>
+<li><p><b>Brainstorming with AI:</b> You may use AI to generate ideas or approaches for your projects.</p>
+</li>
+</ul>
+<p><b>Prohibited Uses of AI</b></p>
+<ul>
+<li><p><b>Writing Reviews &amp; Answering Questions About Papers:</b> AI cannot be used to answer questions for assignments or problem sets.</p>
+</li>
+</ul>
+<p><b>Disclosure Requirement</b>
+If you use AI <i>in any capacity</i>, you must:</p>
+<ol>
+<li><p><b>Disclose your AI usage</b> in your submission (see below for examples).</p>
+</li>
+<li><p><b>Specify the AI model used</b> (e.g., ChatGPT-4 Free, Gemini Free, Copilot Free).</p>
+</li>
+<li><p><b>Explain how AI was used</b> (e.g., &ldquo;Used ChatGPT-4 Free to optimize a function for efficiency&rdquo;).</p>
+</li>
+</ol>
+<p><b>How to Disclose AI Usage:</b></p>
+<ul>
+<li><p><b>Lab Submissions:</b> Include a comment at the top of the PDF submission regarding your use of AI in the assignment. </p>
+<ul>
+<li><p><i>Example 1:  &ldquo;AI Usage Disclosure: Used ChatGPT-4 to optimize the sorting function and debug memory leak issues.&rdquo;</i></p>
+</li>
+<li><p><i>Example 2: &ldquo;AI Usage Disclosure: Initial function structure written by student, AI suggested improvements in efficiency.&rdquo;</i></p>
+</li>
+</ul>
+
+</li>
+</ul>
+<ul>
+<li><p><b>Project Proposals &amp; Written Reports:</b> Acknowledge AI usage in the beginning of the report (e.g., a short paragraph with a couple of sentences in Italic). .</p>
+<ul>
+<li><p><i>Example: &ldquo;During the development of this proposal, I used ChatGPT-4 Free to refiine the problem statement and improve sentence clarity. The core ideas and structure were developed independently.&rdquo;</i></p>
+</li>
+</ul>
+
+</li>
+</ul>
+<ul>
+<li><p><b>General Disclosure Format (for all assignments):</b></p>
+<ul>
+<li><p><b>AI Tool Used:</b> (e.g., ChatGPT-4 Free, Copilot Free)</p>
+</li>
+<li><p><b>Purpose:</b> (e.g., debugging, code optimization, explanation assistance)</p>
+</li>
+<li><p><b>Student Contribution:</b> Clarify what was done by the student vs. what AI assisted with.</p>
+</li>
+</ul>
+
+</li>
+</ul>
+<div id="footer">
+<div id="footer-text">
+Page generated 2025-12-15 16:13:34 EST, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
