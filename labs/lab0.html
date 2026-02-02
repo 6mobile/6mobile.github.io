@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="6.1820 : Mobile and Sensor Computing Course" />
+  <title>6.1820 - Lab 0</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-light.min.css" />
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script><br />
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">6.1820 - Lab 0</h1>
+</header>
+<div id="header_wrap" class="outer">
+<section id="main_content" class="inner">
+<h1 id="project_title"><a href="../index.html">6.1820</a></h1>
+<h2 id="project_tagline">Lab 0</h2>
+<p>Assigned: 2025-02-04<br />
+Due: 2025-02-11<br />
+</p>
+</section>
+</div>
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<p>[ <a href="#layout">Xcode's Layout</a> | <a
+href="#xcode-shortcuts">Xcode Shortcuts</a> | <a
+href="#xcode-docs">Xcode Docs</a> | <a href="#assignment">Lab
+Assignment</a> ]</p>
+<p>In this lab, we cover the basics of the Xcode IDE, the iOS Simulator,
+Xcode's Documentation Viewer, and the Swift programming language. By the
+end of lab, we'll have built a simple iPhone application that displays
+weather from the <a
+href="https://openweathermap.org/current">OpenWeather</a> API.</p>
+<p>To complete this lab, you'll need to download <a
+href="macappstores://itunes.apple.com/us/app/xcode/id497799835">Xcode</a>.</p>
+<hr />
+<h2 id="layout">First, a little about Xcode's layout:</h2>
+<p><img src="images/lab0/xcode_layout.png"
+title="panels: left: navigator, top: menu, right: utilities (right top: inspector, right bottom: library) bottom: debugger (bottom left:variables, bottom right:console)" /><br />
+<img src="images/lab0/toggle_buttons.png"
+title="buttons (left to right): Single (standard) editor, Assistant (split screen) editor, Version (git) editor | Toggle Nagivator, Toggle Debugger, Toggle Utilities" /></p>
+<hr />
+<h2 id="xcode-shortcuts">Some helpful Xcode shortcuts and tips</h2>
+<table>
+<tbody>
+<tr>
+<td style="text-align: left;">View Documentation:</td>
+<td style="text-align: left;">⌥+Click</td>
+</tr>
+<tr>
+<td style="text-align: left;">Open Docs:</td>
+<td style="text-align: left;">⇧⌘<span
+style="font-family:Monaco;">0</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Go to Definition:</td>
+<td style="text-align: left;">⌘+Click</td>
+</tr>
+<tr>
+<td style="text-align: left;">Open file Quickly:</td>
+<td style="text-align: left;">⇧⌘O</td>
+</tr>
+</tbody>
+</table>
+<p>⌘ = Command | ⌥ = Option | ⇧ = Shift</p>
+<hr />
+<h2 id="sim-shortcuts">Some helpful iOS Simulator shortcuts and
+tips</h2>
+<table>
+<tbody>
+<tr>
+<td style="text-align: left;">Press Home Button:</td>
+<td style="text-align: left;">⇧⌘H</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rotate Left</td>
+<td style="text-align: left;">⌘←</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rotate Right</td>
+<td style="text-align: left;">⌘→</td>
+</tr>
+<tr>
+<td style="text-align: left;">If the keyboard isn't
+appearing/disappearing as expected:</td>
+<td style="text-align: left;">⌘K</td>
+</tr>
+</tbody>
+</table>
+<p>⌘ = Command | ⌥ = Option | ⇧ = Shift</p>
+<h2 id="xcode-docs">Xcode Documentation</h2>
+<p>Shortcut: ⇧⌘0</p>
+<p><img src="images/lab0/amazing.gif" alt="amazing" /></p>
+<p>It's kind of amazing.</p>
+<p><img src="images/lab0/slow.gif" alt="slow sloth stamping" /></p>
+<p>It syncs locally, which takes a while</p>
+<p><img src="images/lab0/speed.gif" alt="The Flash" /></p>
+<p>But once it's downloaded, it's crazy fast.</p>
+<p><img src="images/lab0/example.gif" alt="house" /></p>
+<p>It includes ready-to-build example projects for downloads.</p>
+<p><img src="images/lab0/option_click.gif" alt="option_click" /></p>
+<p>You can get to class documentation by option + clicking the class in
+question.</p>
+<h2 id="some-info-about-swift">Some info about Swift</h2>
+<p>You may check <a
+href="https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html">Apple's
+Swift Tour</a> or <a
+href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html">Apple's
+Swift basics</a> for details.</p>
+<h2 id="assignment">On to your lab assignment!</h2>
+<p><img src="images/lab0/lab_result_latlon.gif"
+alt="picture of iOS Simulator loading weather in a barebones app." /></p>
+<p>You're building an app that basically loads the weather.</p>
+<p>The fetchWeather is asynchronous. If there's no network, the app
+shouldn't hang or crash.</p>
+<p>We've recorded videos with instructions on how to complete the lab in
+Swift. (The videos have no sound.) The goal is to get you comfortable
+with Xcode, the docs, the simulator, and Swift.</p>
+<p>The videos build off of one another. You can do the assignment in
+your own way, or in the exact way it's done in the videos. It's entirely
+up to you.</p>
+<p>The videos were recorded a few years ago, so some details about
+XCode's user inferface and Swift have changed. Also, the recordings were
+based on Wunderground API, which is no longer available. We suggest
+using the <a href="https://openweathermap.org/api">OpenWeather</a> API
+to get current weather conditions instead. You can see an example JSON
+response in <a href="https://openweathermap.org/current">OpenWeather
+documentation</a>. We have noted changes for each video, if applicable,
+at the description before the corresponding video.</p>
+<h4 id="video-1---hello-world">Video 1 - Hello World</h4>
+<p>We create the project and print "Hello World". You'll also notice
+that we resize the simulator, and click on some of the menu bars. This
+just so that you see what those buttons do.</p>
+<p>When creating a project, first select “App” (you won’t see
+single-view application), then select "Storyboard" for "User Inferface".
+Another option is "SwiftUI", which is actually a newer method but is not
+compatible with the tutorial videos.</p>
+<p><img src="images/lab0/new_project.png" alt="new project"
+width="640" /></p>
+<iframe width="640" height="385" src="https://www.youtube.com/embed/qYklGQAuZ5Q" frameborder="0" allowfullscreen>
+</iframe>
+<hr />
+<hr />
+<h4 id="video-2---making-a-weather-class">Video 2 - Making a
+<code>Weather</code> Class</h4>
+<p>Here, we define a weather class with some properties and methods.</p>
+<p><strong>Changes:</strong></p>
+<ul>
+<li>You’ll notice that the rest of the videos test/simulate on an
+iPhone. You should simulate on the device that is most similar to the
+one you will be using for hardware (e.g. if you plan to upload live code
+to an iPad, simulate on an iPad).</li>
+</ul>
+<iframe width="640" height="385" src="https://www.youtube.com/embed/Jvjs8ePFl2Y?rel=0" frameborder="0" allowfullscreen>
+</iframe>
+<hr />
+<hr />
+<h4 id="video-3---flushing-out-the-weather-methods">Video 3 - Flushing
+out the <code>Weather</code> Methods</h4>
+<p>We add some details to the weather methods from the previous video.
+In the next video, we instantiate the weather class, and debug it. This
+video contains an intentional error. We'll debug it in the next one.</p>
+<p><strong>Changes:</strong></p>
+<ul>
+<li><p>Make sure to update the URLs and APP IDs with the ones you
+receive from OpenWeather. More details can be found on the <a
+href="https://openweathermap.org/current">documentation</a></p></li>
+<li><p>The url string is
+<code>"https://api.openweathermap.org/data/2.5/weather?zip=\(zip)&amp;appid=\(APP_ID)&amp;units=imperial"</code>.</p></li>
+<li><p>Create an API key by registering on the website for the free
+plan. You will receive an API Key in your email.</p></li>
+<li><p>You may need to update some of the response field names if
+OpenWeather doesn’t provide them (e.g. windString). The specifics of
+which fields you are displaying aren’t super important (you need to at
+least have the current temp) – just include 4-5 different ones like
+humidity, wind speed, etc.</p></li>
+</ul>
+<iframe width="640" height="385" src="https://www.youtube.com/embed/YYCasqQWSnU?rel=0" frameborder="0" allowfullscreen>
+</iframe>
+<hr />
+<hr />
+<h4 id="video-4---instantiating-and-debugging-weather">Video 4 -
+Instantiating and Debugging <code>Weather</code></h4>
+<p>There was an error with weather. We illustrate some of the tools the
+debugger has.</p>
+<p>Using the debugger will make your life much, much easier, and we
+think it's worth learning.</p>
+<p><strong>Changes:</strong> Take a look at an example JSON response in
+<a href="https://openweathermap.org/current#parameter">OpenWeather API
+documentation</a>.</p>
+<ul>
+<li><p>The correct key for JSON is <code>"main"</code>, instead of
+<code>"current_observation"</code>.</p></li>
+<li><p>What should be the key for current weather description? wind?
+visibility?</p></li>
+<li><p>For other values, the JSON response returns a number, not a
+string. We need to cast it into <code>Double</code> before using it in a
+meaningful string, e.g.</p>
+<pre><code>self.windString = &quot;Wind speed: \(currentObservations[&quot;temp&quot;] as! Double) mph&quot;</code></pre>
+<p>Can you find the correct key for each field
+(e.g. <code>"humidity"</code> for humidity)?</p></li>
+</ul>
+<iframe width="640" height="385" src="https://www.youtube.com/embed/yIXXW55gwHw?rel=0" frameborder="0" allowfullscreen>
+</iframe>
+<hr />
+<hr />
+<h4 id="video-5---adding-a-button-to-the-ux-defining-constraints">Video
+5 - Adding a button to the UX, defining constraints</h4>
+<p>We add a new button to the interface and define its constraints.</p>
+<p><strong>We're pressing the control key while dragging from the button
+to the <code>ViewController.swift</code> file.</strong></p>
+<p>In new versions of XCode, the Library button (where you add UI
+elements like Button and Label) is the plus sign button at the top right
+corner instead. Also, you can show an Assistant editor by clicking
+Editor &gt; Assistant or by using the following shortcut: ⌃⌥⌘↩︎.</p>
+<iframe width="640" height="385" src="https://www.youtube.com/embed/aT5O_qyeQGk?rel=0" frameborder="0" allowfullscreen>
+</iframe>
+<hr />
+<hr />
+<h4 id="video-6---enabling-the-button">Video 6 - Enabling the
+button</h4>
+<p>This is pretty straightforward. We're making the button actually do
+stuff now.</p>
+<p>Again remember to press the control key (⌃) while dragging!</p>
+<iframe width="640" height="385" src="https://www.youtube.com/embed/evw_KboMG2Q?rel=0" frameborder="0" allowfullscreen>
+</iframe>
+<hr />
+<hr />
+<h4 id="video-7---adding-more-ui-elements">Video 7 - Adding more UI
+Elements</h4>
+<p>We add some labels to display the weather. Note how we're using stack
+view here.</p>
+<p>There are at least 5 ways to lay out elements in Xcode. This is
+probably the fastest.</p>
+<p>Do not worry about the exact alignment of the elements too much, as
+long as they show up on the simulators. If they don't, some constraints
+may need to be changed or deleted (check the View Controller &gt; View
+&gt; Constraints on the left).</p>
+<iframe width="640" height="385" src="https://www.youtube.com/embed/KWdTqycEP-E?rel=0" frameborder="0" allowfullscreen>
+</iframe>
+<hr />
+<hr />
+<h4 id="video-8---making-the-ui-labels-update">Video 8 - Making the UI
+Labels Update</h4>
+<p>We now update the UI Labels when results are fetched from the
+API.</p>
+<iframe width="640" height="385" src="https://www.youtube.com/embed/r55JUaOVh7k?rel=0" frameborder="0" allowfullscreen>
+</iframe>
+<hr />
+<hr />
+<h4 id="video-9---ui-polish">Video 9 - UI Polish</h4>
+<p>This is about showing and hiding the keyboard. If the keyboard does
+not show up, try pressing ⌘K (Hardware &gt; Keyboard &gt; Toggle
+Software Keyboard) to see if the keyboard shows up.</p>
+<p><strong>Changes:</strong></p>
+<ul>
+<li>The keyboard type should be "Numbers and Punctuation" instead of
+"Number Pad", but this may not be too different on iPad anyway.</li>
+</ul>
+<iframe width="640" height="385" src="https://www.youtube.com/embed/kFcwheYqVKQ?rel=0" frameborder="0" allowfullscreen>
+</iframe>
+<hr />
+<hr />
+<h4 id="video-10---blocks-and-async-optional">Video 10 - Blocks and
+Async [Optional!]</h4>
+<p>We update the app to work asynchronously. Mobile devices often have
+very flaky connections, so it's important to know how to deal with
+them.</p>
+<p>We don't have a video here. Instead, we put the code of two important
+functions here. You may try them, or write your own.</p>
+<p>"Weather.swift": <code>fetchWeatherForZip</code> function</p>
+<pre><code>func fetchWeatherForZip(zip:String, completionHandler: @escaping (Bool) -&gt; Void) -&gt; Void {
+    NSLog(&quot;Getting for:  \(zip)&quot;)
+    let urlString : String = &quot;https://api.openweathermap.org/data/2.5/weather?zip=\(zip)&amp;appid=\(APP_ID)&amp;units=imperial&quot;
+
+    NSLog(urlString)
+
+    let weatherURL = URL(string: urlString)
+
+    let session = URLSession.shared
+    let request = URLRequest(url: weatherURL!, cachePolicy: URLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 5.0)
+
+    let task = session.dataTask(with: request, completionHandler: {(data, response, error) in
+            let ret = self.parseData(data: data)
+        DispatchQueue.main.async(execute: {()-&gt;Void in completionHandler(ret)})
+    })
+
+    task.resume()
+
+}</code></pre>
+<p>"ViewController.swift" <code>getWeather</code> function (Button
+Handler)</p>
+<pre><code>@IBAction func getWeather(_ sender: UIButton) {
+    NSLog(&quot;Get weather!!&quot;)
+    sender.isEnabled = false
+        weather.fetchWeatherForZip(zip: zip.text!, completionHandler: {(ret: Bool)-&gt;Void in
+            if (ret)
+            {
+                NSLog(&quot;Succeeded&quot;)
+                self.temp.text = String(self.weather.currentTemp)
+                //add your fields here
+            } else {
+                NSLog(&quot;Failed&quot;)
+            }
+            sender.isEnabled = true
+        })
+
+    zip.resignFirstResponder()
+}</code></pre>
+<hr />
+<hr />
+<p>That's it for now. Have a good one!</p>
+<p><img src="images/lab0/hack_the_planet.gif"
+title="There are no speed limits on the information highway."
+alt="HACK THE PLANET!" /></p>
+<h2 id="checkoff">Check-offs</h2>
+<p>We will hold checkoffs during office hours and the optional iOS
+tutorial on Friday Feb 7. Lab 0 is due the next Tuesday, so we will also
+hold checkoffs after that date.</p>
+</section>
+</div>
+</body>
+</html>

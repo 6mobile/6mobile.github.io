@@ -1,19 +1,19 @@
 # jemdoc: menu{MENU}{index.html}
-= 6.1820/MAS.453: Mobile and Sensor Computing, Spring 2025
+= 6.1820/MAS.453: Mobile and Sensor Computing, Spring 2026
 
-*Instructors:* [http://www.mit.edu/~fadel/ Fadel Adib], [https://tara-boroushaki.com/ Tara Boroushaki]
+*Instructors:* [http://www.mit.edu/~fadel/ Fadel Adib]
 
-*TAs:* Waleed Akbar ([mailto:wakbar@mit.edu wakbar@mit.edu]), [https://jackrademacher.me/ Jack Rademacher] ([mailto:jradema@mit.edu jradema@mit.edu])
+*TAs:* Maisy Lam ([mailto:mllam@mit.edu mllam@mit.edu])
 
 *Course Staff Email:* [mailto:6mobile@mit.edu 6mobile@mit.edu]
 
-*Lectures:* Tues/Thurs 1-2:30pm in 24-121
+*Lectures:* Tues/Thurs 1-2:30pm in 66-168
 
-*Office Hours:*
-- Fadel: By appointment
-- TA:
-     -- Monday: 4-5 PM (Jack, in-person in E14-493)
-     -- Tuesday: 4-5 PM (Waleed, in-person in E14-493)
+# *Office Hours:*
+# - Fadel: By appointment
+# - TA:
+#      -- Monday: 4-5 PM (Jack, in-person in E14-493)
+#     -- Tuesday: 4-5 PM (Waleed, in-person in E14-493)
 
 = Course Overview
 
@@ -43,7 +43,8 @@ Topics include the principles, practices, and emerging applications in:
 
 = Announcements
 
-# - Join the [https://mit-6808-2022.slack.com slack]! Reach out if you have problems because announcements will be posted there!
+ - Join the [https://mit-mobile-sensors.slack.com slack]! Reach out if you have problems because announcements will be posted there!
+ - Join the [https://www.gradescope.com/courses/1248810 gradescope]! Entry code: 6X7D3G
 
 # - You can work with a partner on labs if you choose to
 
