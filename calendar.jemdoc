@@ -83,14 +83,14 @@ table.calendar thead tr {
   <!-- FULL LINKS 2026-2-3
     <td id="2026-2-3" class="lecture"><span class="date">Feb 3</span><br />
       <i>First day of classes</i> <br />
-      <b>LEC 1:</b> Introduction and Key Ideas (<a href="./lectures/lec1-slides-2025.pdf" target="_blank">Slides</a>)<br />
+      <b>LEC 1:</b> Introduction and Key Ideas (<a href="./lectures/lec1-slides-2026.pdf" target="_blank">Slides</a>)<br />
       <span class="reading"><b>Assigned:</b> <a href="labs/lab0.html">Lab 0</a></span>
     </td>
   -->
 
   <td id="2026-2-3" class="lecture"><span class="date">Feb 3</span><br />
     <i>First day of classes</i> <br />
-    <b>LEC 1:</b> Introduction and Key Ideas <br />
+    <b>LEC 1:</b> Introduction and Key Ideas (<a href="./lectures/lec1-slides-2026.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Assigned:</b> <a href="labs/lab0.html">Lab 0</a></span>
   </td>
 
@@ -107,8 +107,8 @@ table.calendar thead tr {
   -->
 
   <td id="2026-2-5" class="lecture"><span class="date">Feb 5</span><br />
-    <b>LEC 2:</b> Fundamentals of IoT Localization <br />
-    <span class="reading"><b>Preparation:</b> Read
+    <b>LEC 2:</b> Fundamentals of IoT Localization (<a href="./lectures/Lec2-slides-localization-2025.pdf" target="_blank">Slides</a>)<br />
+      <span class="reading"><b>Preparation:</b> Read
       <a href="http://onlinelibrary.wiley.com.libproxy.mit.edu/doi/10.1002/0470092335.ch6/pdf" target="_blank">Location-based Services</a>,
       <a href="https://en.wikipedia.org/wiki/Global_Positioning_System" target="_blank">Wikipedia: GPS</a>
     (<a href="questions.html?q=q-lec2">Questions</a>)</span>
