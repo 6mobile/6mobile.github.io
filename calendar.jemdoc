@@ -135,7 +135,7 @@ table.calendar thead tr {
   <td id="2026-2-10" class="lecture"><span class="date">Feb 10</span><br />
     <b>LEC 3:</b> Practical Device-based Localization <br />
     <span class="reading"><b>Preparation:</b> Read
-      <a href="http://nms.lcs.mit.edu/papers/cricket.pdf" target="_blank">Cricket</a>,
+      <a href="https://dl.acm.org/doi/pdf/10.1145/345910.345917" target="_blank">Cricket</a>,
       <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/infocom2000.pdf" target="_blank">RADAR</a></span><br />
     <span class="reading"><b>Assigned:</b> Lab 1</a></span><br />
     <span class="reading"><b>Assigned:</b> Pset 1</a></span><br />
