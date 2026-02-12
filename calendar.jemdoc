@@ -155,7 +155,7 @@ table.calendar thead tr {
   -->
 
     <td id="2026-2-12" class="lecture"><span class="date">Feb 12</span><br />
-    <b>LEC 4:</b> Seeing through Walls & Device-Free Localization <br />
+    <b>LEC 4:</b> Seeing through Walls & Device-Free Localization (<a href="./lectures/Lec4-slides-DfP-2026.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Preparation:</b> Read
       <a href="http://witrack.csail.mit.edu/witrack-paper.pdf" target="_blank">WiTrack</a></span><br/>
     <span class="deadline"><b>DUE:</b> <a >Lab 0</a></span><br/>
