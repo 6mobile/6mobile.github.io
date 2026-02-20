@@ -185,7 +185,8 @@ table.calendar thead tr {
   -->
 
     <td id="2025-2-19" class="lecture"><span class="date">Feb 19</span><br />
-    <b>LEC 5:</b> Network Connectivity (BLE, low-power WAN, Wi-Fi, cellular, 5G) <br />
+    <b>LEC 5:</b> Network Connectivity (BLE, low-power WAN, Wi-Fi, cellular, 5G) (<a href="./lectures/lec5-slides-connectivity-2026.pdf" target="_blank">Slides</a>)<br />
+    <span class="reading"><b>Preparation:</b> Read
     <a href="./materials/AirtagsReading.pdf" target="_blank">gps surveillance</a></span><br />
     <span class="deadline"><b>DUE:</b> Lab 1</span><br/>
     (<a href="questions.html?q=q-lec5">Questions</a>)
