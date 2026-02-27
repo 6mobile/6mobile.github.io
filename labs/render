@@ -1,0 +1,7 @@
+for i in 0 1 2 3 4; do
+pandoc lab$i.md -f markdown -t html --mathjax \
+-c https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-light.min.css \
+-c stylesheets/stylesheet.css \
+--no-highlight \
+-s -o lab$i.html
+done

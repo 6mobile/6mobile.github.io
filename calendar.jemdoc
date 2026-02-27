@@ -173,7 +173,8 @@ table.calendar thead tr {
     <span class="reading"><b>Preparation:</b> Read
     <a href="https://pdos.csail.mit.edu/papers/grid:mobicom03/paper.pdf" target="_blank">ETX</a></span><br/>
     (<a href="questions.html?q=q-lec6">Questions</a>)
-     <span class="reading"><b>Assigned:</b> Lab 2</span>
+      <span class="reading"><b>Assigned:</b> <a href="labs/lab2.html">Lab 2</a></span><br />
+
   </td>
 
   <td id="2025-2-27"></td>

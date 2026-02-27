@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="6.1820 : Mobile and Sensor Computing" />
+  <title>6.1820 - Lab 2</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-light.min.css" />
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script><br />
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">6.1820 - Lab 2</h1>
+</header>
+<div id="header_wrap" class="outer">
+<header class="inner">
+<h1 id="project_title"><a href="../index.html">6.1820</a></h1>
+<h2 id="project_tagline">Lab 2: Getting Data From Anthills</h2>
+<p>Assigned: 2026-02-26<br />
+Due: 2026-03-10<br />
+</p>
+</header>
+</div>
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<ul>
+<li><a href="#gettingstarted">Getting Started</a></li>
+<li><a href="#sec1">Section 1</a>
+<ul>
+<li><a href="#task01">Task 1</a></li>
+<li><a href="#task02">Task 2</a></li>
+<li><a href="#task03">Task 3</a></li>
+</ul></li>
+<li><a href="#sec2">Section 2</a>
+<ul>
+<li><a href="#task04">Task 4</a></li>
+<li><a href="#task05">Task 5</a></li>
+</ul></li>
+<li><a href="#submission">Submission and Checkoff</a></li>
+</ul>
+<p>The goal of this lab is to implement code in the Anteater app to scan
+for a nearby Anthill, connect to it, and stream temperature and humidity
+readings from it. We have provided you with all of the code to show
+sensor readings in a table in the UI, and to plot sensor readings on a
+chart, but you will need to implement all of the networking code, and
+the code to extract sensor readings from packets sent by the
+Anthill.</p>
+<h2 id="gettingstarted">Getting Started</h2>
+<p>Start by downloading the <a
+href="codes/lab2/anteater-swift-4.2-xcode11.zip">Anteater App Skeleton
+for Xcode 11+/iOS 13+</a>. Uncompress this file to create a directory
+called "anteater-swift-blank". Open the anteater.xcodeproj file in this
+directory in XCode. You should be able to build and run the project in
+the simulator or your phone.</p>
+<p><strong>Known issue for Xcode 11+/iOS 13+:</strong> when you build
+and run the app in your iPhone for the first time and try to log in with
+any username, the app may crash. Simply build and run again. The app
+should skip the log-in screen without any error.</p>
+<p>The Anteater code includes a skeleton class,
+<code>SensorModel.swift</code> that you will need to implement. The
+<code>SensorModel</code> class will implement <code>BLEDelegate</code>
+and initialize an instance of <code>BLE</code> to handle interaction
+with the device. In addition, to convey the status of a sensor
+connection, <code>SensorModel</code> will make calls into a delegate,
+which implements the <code>SensorModelDelegate</code> protocol defined
+in <code>SensorModel.swift</code>. The methods of the delegate are as
+follows:</p>
+<pre class="swift"><code>func sensorModel(_ model: SensorModel, didChangeActiveHill hill: Hill?)
+func sensorModel(_ model: SensorModel, didReceiveReadings readings: [Reading], forHill hill: Hill?)</code></pre>
+<p>These methods let the application know when a new sensor connects, or
+when some data is received.</p>
+<p>The code also includes a complete implementation of the class
+<code>HillsTableViewController</code>, which creates an instance of
+<code>SensorModel</code> and sets itself as the delegate of that
+instance.</p>
+<p>For <strong>iOS 13+</strong>, please make the following changes:</p>
+<ul>
+<li>Select your project from the navigator panel and then highlight the
+Build Settings tab. Filter the settings or locate “Other Linker Flags”
+from this list and then add “-ObjC -all_load” to these settings. (See <a
+href="images/lab2/build_settings_linker_flags.png">this screenshot</a>
+for reference.)</li>
+<li>Select “Info.plist” from the navigator panel and add a property
+“Privacy - Bluetooth Always Usage Description” with value “Bluetooth
+required”.</li>
+</ul>
+<p>This lab is divided into two sections. In the first section, you will
+implement the code to scan for and connect to an anthill, and then in
+the second section you will implement the code to extract readings from
+packets sent by the anthill and deliver them to the app.</p>
+<p>To test this lab, you will need to obtain an anthill node. Note that
+the bluetooth functions you will implement do not work properly on the
+iPhone simulator, so you will need to test on a real device. If you are
+working with a partner, please check out only one anthill as we have a
+limited number of them. Please do not throw the box away.</p>
+<p>The anthill you receive will have a sensor and a USB Micro port. To
+power the anthill, it will need to be powered over USB to your laptop,
+or to any other USB charger, as shown below:</p>
+<center>
+<img src="images/lab2/circuit.jpg" width="450" />
+</center>
+<p>The pins between the BLE node and sensor should be connected as
+follows:</p>
+<ul>
+<li><strong>(+)</strong> on sensor to <strong>+3V3</strong> on BLE node
+(Be careful, not D13!)</li>
+<li><strong>(-)</strong> on sensor to <strong>GND</strong> on BLE
+node</li>
+<li><strong>S</strong> or <strong>out</strong> on sensor to
+<strong>D8</strong> on BLE node</li>
+</ul>
+<p>There are two <strong>GND</strong> pins in total. If one does not
+work, try using other pins.</p>
+<center>
+<a href="https://store.arduino.cc/usa/nano-33-iot"><img
+src="images/lab2/arduino_diagram.png" width="600" /></a>
+</center>
+<h2 id="sec1">Section 1: Connecting to an Anthill</h2>
+<p>The goal of this section is to successfully establish a connection
+with an anthill. In the next section you will extract data from packets
+sent by the anthill.</p>
+<p>Before working on this section, you should familiarize yourself with
+the basics of Bluetooth Low Energy (BLE) and the iOS APIs for accessing
+it. This <a
+href="https://developer.apple.com/library/ios/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/CoreBluetoothOverview/CoreBluetoothOverview.html">Apple
+Document</a> does a good job of summarizing these.</p>
+<p>Each anthill acts as a BLE Peripheral. The connection protocol is not
+that complicated, but the code is somewhat messy as each step in the
+protocol is asynchronous; that is, you make a call to perform some BLE
+function, and some time later a callback is triggered in your
+application to indicate that the function has completed.</p>
+<p>The basic sequence is as follows:</p>
+<ol type="1">
+<li>Start scanning for anthills</li>
+<li>Once an anthill is discovered, connect to it</li>
+<li>Once you have connected, discover its services</li>
+<li>For each service, discover its characteristics</li>
+<li>For each characteristic, check if it is the sensor data
+characteristic; if it is, start listening for notifications to the state
+of the characteristic</li>
+<li>On each state update, process the received data to extract any
+sensor readings.</li>
+</ol>
+<!-- Since each state update is at most 20 bytes, the anthill may fragment -->
+<!-- one sensor reading across several packets. -->
+<p>You will need to add several functions to <code>SensorModel</code> in
+order to implement <code>BLEDelegate</code>:</p>
+<pre class="swift"><code>func ble(didUpdateState state: BLEState)
+func ble(didDiscoverPeripheral peripheral: CBPeripheral)
+func ble(didConnectToPeripheral peripheral: CBPeripheral)
+func ble(didDisconnectFromPeripheral peripheral: CBPeripheral)
+func ble(_ peripheral: CBPeripheral, didReceiveData data: Data?)</code></pre>
+<p>The SensorModel should inherit from <code>BLEDelegate</code>:</p>
+<pre class="swift"><code>class SensorModel: BLEDelegate {
+    // ...
+}</code></pre>
+<p>Once you add the <code>BLEDelegate</code> part to indicate that,
+Xcode will suggest you to add protocol stubs. Press “Fix” in the red
+error box to add the five function signatures automatically, or you can
+add them manually too.</p>
+<h3 id="task01">Task 1: Initialize Bluetooth, and Start Scanning for
+Anthills</h3>
+<p>Before you can scan for an anthill, you need to initialize a
+<code>BLE</code> object. A good place to do this is in the
+<code>init</code> method of <code>SensorModel</code>. Since you will
+need access this object repeatedly, you probably want to declare it as
+an instance variable of the class.</p>
+<p>Keep in mind that after initializing the object, you will need to set
+its delegate to the current SensorModel object:</p>
+<pre class="swift"><code>ble.delegate = self</code></pre>
+<p>Once you have created this object, the BLE will call
+<code>ble(didUpdateState ...)</code> to indicate the status of
+Bluetooth. You should check that the status is
+<code>BLEState.poweredOn</code> and if it is, initiate scanning for
+anthills.</p>
+<p>To initiate scanning, call the <code>startScanning</code> method on
+the <code>BLE</code> instance.</p>
+<p>Once scanning has started, you will receive a callback to the
+<code>BLEDelegate</code> method
+<code>ble(didDiscoverPeripheral ...)</code>. You will need to define
+this method in <code>SensorModel</code>, as per the signature in the
+BLEDelegate protocol defined in <code>BLE.swift</code>.</p>
+<p>To verify that this task is completed, use the debugger to confirm
+<code>didUpdateState</code> is called and that the status is
+<code>BLEState.poweredOn</code>. Also verify that when
+<code>startScanning</code> is called in the presence of an anthill, you
+receive a callback to <code>didDiscoverPeripheral</code>.</p>
+<h3 id="task02">Task 2: Implement
+<code>didDiscoverPeripheral</code></h3>
+<p><code>didDiscoverPeripheral</code> will be called when a BLE
+Peripheral advertising the above characteristic comes into proximity of
+your phone. When this happens, you need to connect to device, and then
+scan for services and characteristics.</p>
+<p>When <code>didDiscoverPeripheral</code> is called, you are given a
+handle to a <code>CBPeripheral</code> object. This is the peripheral you
+want to try to connect to (in this lab, you are going to connect to the
+first peripheral you discover, and stay connected to it until it moves
+out of range, rather than trying to prioritize connecting to certain
+anthills).</p>
+<p>To connect to a peripheral, simply call
+<code>connectToPeripheral</code>. If the connection is successful,
+<code>didConnectToPeripheral</code> will be called. You will need to
+define <code>didConnectToPeripheral</code>, as per the signature in
+<code>BLE.swift</code>. Use the debugger to verify that this method is
+called correctly.</p>
+<h3 id="task03">Task 3: Implement
+<code>didConnectToPeripheral</code></h3>
+<p>Once you have connected to a peripheral, you will need to call the
+delegate method <code>didChangeActiveHill</code>. The method takes an
+instance of Hill, which is defined towards the top of
+<code>SensorModel.swift</code> (the name of the Hill should be set to
+<code>peripheral.name</code>). You should initialize a Hill and store it
+in the <code>activeHill</code> instance variable, as the delegate will
+expect the same Hill later for the <code>didReceiveReadings</code>
+delegate method. You will also need to store the CBPeripheral in an
+instance variable, as you will want to distinguish the peripheral
+corresponding to activeHill from other peripherals.</p>
+<p>After connecting to a peripheral, the <code>BLE</code> instance will
+call the <code>discoverServices</code> function in the iOS BLE API;
+then, after services are discovered, the <code>BLE</code> instance will
+call <code>didDiscoverCharacteristicsForService</code> and handle
+updates to the sensor data characteristic. Finally, the <code>BLE</code>
+instance will request notifications for the sensor characteristic, and
+the iOS API will call <code>didUpdateValueForCharacteristic</code> on
+the <code>BLE</code> instance whenever a new packet of sensor data is
+available. The <code>BLE</code> instance will then call
+<code>didReceiveData</code> on the <code>SensorModel</code>.</p>
+<p>To complete this task, verify that <code>didReceiveData</code> is
+being called, e.g., by setting breakpoints in this method in the
+debugger. If it is not called after about 30 seconds, see <a
+href="#troubleshooting">Troubleshooting</a>.</p>
+<h2 id="sec2">Section 2: Extracting readings from an Anthill</h2>
+<p>When a connection is established, the Anthill begins streaming
+packets containing sensor data on the sensor data characteristic. You
+will need to extract sensor readings from this characteristic and post
+them to the application. (For the purposes of this lab, you do not
+explicitly request any data or send any commands to the anthill.)</p>
+<!-- The anthill sends a stream of ASCII characters, containing one of three -->
+<!-- types of messages: humidity readings, temperature readings, and error -->
+<!-- messages. Each message begins with a single letter, and then has a -->
+<!-- custom payload. The messages are as follows: -->
+<p>The anthill sends a stream of ASCII characters, containing one of two
+types of messages: humidity readings and temperature readings. Each
+message begins with a single letter, and then has a custom payload. The
+messages are as follows:</p>
+<ul>
+<li>‘H’: humidity. The payload consists of an ASCII representation of
+the percent relatively humidity, as a floating point number, followed by
+a ‘D’, indicating the end of the number.</li>
+<li>‘T’: temperature. The payload consists of an ASCII representation of
+the temperature (in Fahrenheit), as a floating point number, followed by
+a ‘D’, indicating the end of the number.
+<!-- -   'E': an error, followed by an additional character indicating the -->
+<!--     type of the error. (You can simply ignore error messages, but will -->
+<!--     need to parse these messages.) If the Anthill continually sends -->
+<!--     error packets, the connections betweeen the sensor and the board may -->
+<!--     be loose. Check the connections, try connecting to a different -->
+<!--     **GND** pin (there are three in total), or ask a TA for a new -->
+<!--     Anthill/sensor. --></li>
+</ul>
+<!-- This stream of messages is fragmented into BLE packets that are up to 20 -->
+<!-- bytes in length. Note that this means that a given message may be spread -->
+<!-- across two BLE packets. You will receive one call to `didReceiveData` -->
+<!-- for each packet, but will not necessarily be able to parse the entirety -->
+<!-- of each packet and will need to save the unparsed bytes in a buffer -->
+<!-- until additional bytes arrive. You might also start receiving data from -->
+<!-- the middle of a packet. -->
+<p>Each call to <code>didReceiveData</code> should correspond to one BLE
+packet (humidity or temperature). Every two seconds, each anthill
+attempts read the humidity and temperature values from the sensor and
+send a pair of packets. However, because of loose connections or
+imperfect sensor, the packets may not be sent every two seconds.</p>
+<h3 id="task04">Task 4: Implement <code>didReceiveData</code></h3>
+<p>To complete this task, implement code to extract messages from the
+stream of packets delivered to <code>didReceiveData</code>.</p>
+<p>Once you have extracted a sensor reading from the stream, create a
+<code>Reading</code> object from it (set type to either
+<code>ReadingType.Temperature</code> or
+<code>ReadingType.Humidity</code>, and <code>sensorId</code> to
+<code>peripheral.name</code>). You should add it to the
+<code>activeHill</code>’s <code>readings</code> array, which the UI will
+access to update its list of sensor readings. Call the delegate method
+<code>didReceiveReadings</code>, so that the delegate is notified of the
+new readings.</p>
+<p>You might find these code snippets useful:</p>
+<pre class="swift"><code>// convert a non-nil Data optional into a String
+let str = String(data: data!, encoding: String.Encoding.ascii)!
+
+// get a substring that excludes the first and last characters
+let substring = str[str.index(after: str.startIndex)..&lt;str.index(before: str.endIndex)]
+
+// convert a Substring to a Double
+let value = Double(substring)!</code></pre>
+<p>This task is complete when you can see sensor readings streaming into
+sensor reading display on the Anteater Readings screen, as shown
+below:</p>
+<center>
+<img src="images/lab2/readings.png" width="300" />
+</center>
+<h3 id="task05">Task 5: Implement
+<code>didDisconnectFromPeripheral</code></h3>
+<p>When the connected hill is powered off,
+<code>didDisconnectFromPeripheral</code> will be called. If the provided
+peripheral matches the one corresponding to the <code>activeHill</code>,
+you should reset <code>activeHill</code> to <code>nil</code> then call
+<code>didChangeActiveHill</code> with <code>nil</code>, so that the
+delegate is notified that there is no longer any connected hill. Lastly,
+initiate scanning to start scanning for new connections.</p>
+<p>To verify, disconnect the anthill from power and check that the
+readings are no longer displayed. Then, connect the anthill to power and
+check that your phone automatically reconnects with the anthill and
+displays the new readings once the connection is established.</p>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>While it is unlikely to happen, if you suspect that no packets are
+being sent despite correct sensor connections, you can debug it by
+following the instructions below.</p>
+<ul>
+<li>Connect the Arduino board to your computer</li>
+<li>Install the <a
+href="https://www.arduino.cc/en/Main/Software">Arduino IDE</a></li>
+<li>Go to Tools &gt; Board &gt; select “Arduino NANO 33 IoT”</li>
+<li>Go to Tools &gt; Port &gt; select an option that ends with “(Arduino
+NANO 33 IoT)”</li>
+<li>Go to Tools &gt; Serial Monitor</li>
+</ul>
+<p>You should see a window that prints “HELLO WORLD” every two seconds
+and the temperature and humidity value pairs every time the packets are
+sent (<a href="images/lab2/serial_monitor.png">reference</a>). If your
+iPhone app fails to detect any packet after implementing it in Xcode and
+the Serial Monitor does not show the messages as described, please
+contact us to get a new board and sensor.</p>
+<h2 id="submission">Submission and Checkoff Instructions</h2>
+<p>Write up your answers to the following items in a single PDF file and
+name it <strong>lab2_${mit_username}.pdf</strong> or
+<strong>lab2_${mit_username1}+${mit_username2}.pdf</strong> if you work
+with a partner (e.g. lab2_mihirt.pdf or lab2_mihirt+bnagda.pdf). Upload
+the PDF file to Gradescope by <strong>Mar 10, 11:59 PM</strong>. If you
+work with a partner, you only have to submit once, but each partner must
+each do a checkoff. You can get a checkoff during Office Hours within a
+week after the submission deadline, i.e. Mar 17, 11:59 PM. You do not
+need to submit your code, but we may ask to look at your code during the
+checkoff.</p>
+<ol type="1">
+<li>Names and MIT emails (including your lab partner, if available)</li>
+<li>How does a central (your phone) discover a peripheral (an
+anthill)?</li>
+<li>What is the relationship between a peripheral, a service, and a
+characteristic? (Hint: review this <a
+href="https://developer.apple.com/library/ios/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/CoreBluetoothOverview/CoreBluetoothOverview.html">Apple
+Document</a>)</li>
+<li>Provide a screenshot for the Anteater app with sensor readings,
+similar to the example screenshot</li>
+<li>Estimated number of hours you spent on this lab per person</li>
+<li>Any comments/suggestions for the lab? Any questions you may have for
+the checkoff? (Optional)</li>
+</ol>
+<!-- During the checkoff, we may ask you to show a demonstration of an -->
+<!-- Application, show the experiments\' results, or explain if and why the -->
+<!-- results are as expected (or unexpected). -->
+<p><strong>A checkoff will require successfully displaying sensor
+readings on the Readings screen, as well as disconnecting from and
+reconnecting to an anthill (by powering it down and powering it back
+up.) The app should no longer display the readings if the anthill is
+powered off, and should automatically reconnect to the anthill once it
+is powered on again.</strong></p>
+</section>
+</div>
+</body>
+</html>
