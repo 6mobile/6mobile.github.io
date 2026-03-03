@@ -185,7 +185,7 @@ table.calendar thead tr {
 
 
   <td id="2025-3-3" class="lecture"><span class="date">Mar 3</span><br />
-    <b>LEC 7:</b> Batteryless Connectivity & Smart Cities <br />
+    <b>LEC 7:</b> Batteryless Connectivity & Smart Cities (<a href="./lectures/backscatter-2026.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="https://web.cs.ucla.edu/~omid/Papers/Mobicom18a.pdf" target="_blank">Hacking RFIDs</a> and <a href="https://conferences.sigcomm.org/sigcomm/2015/pdf/papers/p297.pdf">Caraoke</a></span><br />
     (<a href="questions.html?q=q-lec7">Questions</a>) </br>  
