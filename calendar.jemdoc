@@ -195,7 +195,7 @@ table.calendar thead tr {
 
 
     <td id="2025-3-5" class="lecture"><span class="date">Mar 5</span><br />
-    <b>LEC 8:</b>Self-Driving Cars <br />
+    <b>LEC 8:</b>Self-Driving Cars (<a href="./lectures/lecture_10_self_driving_cars_2026_3.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Guan_Through_Fog_High-Resolution_Imaging_Using_Millimeter_Wave_Radar_CVPR_2020_paper.pdf" target="_blank">Hawkeye: Through Fog High Resolution Imaging Using Millimeter Wave Radar</a></span><br />
     (<a href="questions.html?q=q-lec8">Questions</a>)<br/>
@@ -212,7 +212,7 @@ table.calendar thead tr {
 
 
     <td id="2025-3-10" class="lecture"><span class="date">Mar 10</span><br />
-    <b>LEC 9:</b> Intro to Inertial Sensing; Activity Recognition <br />
+    <b>LEC 9:</b> Intro to Inertial Sensing; Activity Recognition (<a href="./lectures/Lec9-slides-inertial-2026.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="https://app.knovel.com/kn/resources/kt003T2W98/kpSINTE002/pdf?b-toc-cid=kpSINTE002&b-toc-title=Strapdown%20Inertial%20Navigation%20Technology%20%282nd%20Edition%29&b-toc-url-slug=fundamental-principles">Developments of Inertial Sensing</a>
     and <a href="https://app.knovel.com/kn/resources/kt003T2WF2/kpSINTE002/pdf?b-toc-cid=kpSINTE002&b-toc-title=Strapdown%20Inertial%20Navigation%20Technology%20%282nd%20Edition%29&b-toc-url-slug=basic-principles-strapdown">Principles of Inertial Sensing (Section 3.1 and 3.2 only)</a>
