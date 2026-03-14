@@ -242,7 +242,7 @@ table.calendar thead tr {
 -->
   <td id="2025-3-13">
   <span class="reading"><b>Assigned:</b> <a href="projects.html">Project Proposal Instructions</a></span>
-  <span class="reading"><b>Assigned:</b> <a target="_blank">Pset 2</a></span><br />
+    <span class="reading"><b>Assigned:</b> <a href="psets/6_1820_PSet_2____2026.pdf">Pset 2</a></span><br />
   </td>
 </tr>
 
