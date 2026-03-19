@@ -272,23 +272,12 @@ table.calendar thead tr {
 
  
 
-<!-- FULL LINKS 2026-3-19
   <td id="2025-3-19" class="lecture"><span class="date">Mar 19</span><br />
-    <b>LEC 12:</b> Wireless NeRFs (<a href="https://www.mit.edu/~fadel/courses/MAS.wireless/materials/lec8-slides-2<025-part2.pdf" target="_blank">Slides</a>)br />
-    <span class="reading"><b>Preparation:</b> Read
-    <a href="https://arxiv.org/pdf/2505.22441" target="_blank">Can NeRFs See without Cameras?</a></span><br />
-    (<a href="questions.html?q=q-lec12">Questions</a>)<br/>
-    <span class="reading"><b>Assigned:</b>Lab 4</span>
-    <br />
-  </td>
--->
-
-  <td id="2025-3-19" class="lecture"><span class="date">Mar 19</span><br />
-    <b>LEC 12:</b> Ocean IoT <br />
+    <b>LEC 12:</b> Ocean IoT <br />  (<a href="./lectures/Ocean-IoT-Lecture-12.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Preparation:</b> Read
      <a href="http://www.mit.edu/~fadel/papers/PAB-paper.pdf" target="_blank">Underwater Backscatter Networking</a></span>
     (<a href="questions.html?q=q-lec12">Questions</a>)<br/>
-    <span class="reading"><b>Assigned:</b>Lab 4</span>
+      <span class="reading"><b>Assigned:</b> <a href="labs/lab4.html">Lab 4</a></span><br />
     <br />
   </td>
 
