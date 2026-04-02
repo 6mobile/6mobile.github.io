@@ -325,7 +325,7 @@ table.calendar thead tr {
 -->
 
   <td id="2025-4-2" class="lecture"><span class="date">Apr 2</span><br />
-    <b>LEC 14:</b> Wireless NeRFs <br />
+    <b>LEC 14:</b> Wireless NeRFs (<a href="./lectures/Lec14_WirelessNerfs.pdf" target="_blank">Slides</a>)<br />
     <span class="reading"><b>Preparation:</b> Read
     <a href="https://arxiv.org/pdf/2505.22441" target="_blank">Can NeRFs See without Cameras?</a></span>
     <br/>(<a href="questions.html?q=q-lec14">Questions</a>)
